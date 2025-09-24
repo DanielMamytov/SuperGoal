@@ -1,8 +1,8 @@
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.recyclerview.widget.RecyclerView
 import be.buithg.supergoal.R
 
@@ -13,7 +13,7 @@ class CategoryAdapter(
 ) : RecyclerView.Adapter<CategoryAdapter.VH>() {
 
     inner class VH(v: View) : RecyclerView.ViewHolder(v) {
-        val cb: CheckBox = v.findViewById(R.id.cb)
+        val cb: AppCompatCheckBox = v.findViewById(R.id.cb)
         val tv: TextView = v.findViewById(R.id.tv)
         val divider: View = v.findViewById(R.id.divider)
     }
