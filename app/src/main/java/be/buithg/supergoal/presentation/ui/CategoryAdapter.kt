@@ -1,7 +1,7 @@
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import be.buithg.supergoal.R
@@ -13,7 +13,8 @@ class CategoryAdapter(
 ) : RecyclerView.Adapter<CategoryAdapter.VH>() {
 
     inner class VH(v: View) : RecyclerView.ViewHolder(v) {
-        val cb: CheckBox = v.findViewById(R.id.cb)
+        val checkContainer: View = v.findViewById(R.id.check_container)
+        val checkIcon: ImageView = v.findViewById(R.id.check_icon)
         val tv: TextView = v.findViewById(R.id.tv)
         val divider: View = v.findViewById(R.id.divider)
     }
@@ -27,8 +28,11 @@ class CategoryAdapter(
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(h: VH, position: Int) {
+        val isSelected = position == selected
+
         h.tv.text = items[position]
-        h.cb.isChecked = (position == selected)
+        h.checkContainer.isSelected = isSelected
+        h.checkIcon.visibility = if (isSelected) View.VISIBLE else View.GONE
 
         h.divider.visibility = if (position == items.lastIndex) View.GONE else View.VISIBLE
 
