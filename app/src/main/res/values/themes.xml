@@ -6,4 +6,33 @@
     </style>
 
     <style name="Theme.SuperGoal" parent="Base.Theme.SuperGoal" />
+
+    <style name="BottomNav_NoIndicator" parent="">
+        <item name="android:color">@android:color/transparent</item>
+        <item name="android:drawable">@android:color/transparent</item>
+    </style>
+    <!-- res/values/styles.xml -->
+    <style name="ThemeOverlay_SuperGoal_BottomSheet" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SuperGoal_BottomSheet_Style</item>
+    </style>
+
+    <style name="SuperGoal_BottomSheet_Style" parent="Widget.Material3.BottomSheet">
+        <item name="android:background">@drawable/bg_dropdown_popup</item> <!-- #252A34 + #39393F -->
+        <item name="shapeAppearanceOverlay">@style/SuperGoal_Sheet_Corners</item>
+    </style>
+
+    <style name="SuperGoal_Sheet_Corners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+        <style name="ShapeAppearanceOverlay.App.CornerMedium" parent="">
+            <item name="cornerFamily">rounded</item>
+            <item name="cornerSize">20dp</item>
+        </style>
+
+
+
 </resources>

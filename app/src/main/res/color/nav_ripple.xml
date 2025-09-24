@@ -1,0 +1,3 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#26F23230"/> <!-- красный с ~15% -->
+</selector>

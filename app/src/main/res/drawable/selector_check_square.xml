@@ -1,0 +1,30 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- checked -->
+    <item android:state_checked="true">
+        <layer-list>
+            <!-- красный квадрат -->
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="#F23230"/>
+                    <corners android:radius="6dp"/>
+                </shape>
+            </item>
+
+            <!-- белая галочка по центру (VECTOR!) -->
+            <item
+                android:drawable="@drawable/ic_check_white_16"
+                android:gravity="center"/>
+        </layer-list>
+    </item>
+
+    <!-- unchecked -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/>
+            <stroke android:width="2dp" android:color="#F23230"/>
+            <corners android:radius="6dp"/>
+        </shape>
+    </item>
+
+</selector>

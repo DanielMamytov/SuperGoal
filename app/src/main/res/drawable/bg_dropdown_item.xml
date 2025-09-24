@@ -1,0 +1,14 @@
+<!-- res/drawable/bg_dropdown_item.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#252A34"/>
+        </shape>
+    </item>
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="1dp"/>
+            <solid android:color="#39393F"/>
+        </shape>
+    </item>
+</layer-list>

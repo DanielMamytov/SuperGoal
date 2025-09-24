@@ -1,14 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/goal_bg"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
     tools:context=".presentation.ui.goal.GoalFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="25dp"
+        android:paddingBottom="8dp">
+
+        <!-- Заголовок MY GOALS -->
+        <TextView
+            android:id="@+id/tvMyGoals"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="MY GOALS"
+            android:textSize="40sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/poppins_extra_bold" />
+
+        <!-- Кнопка + -->
+        <ImageButton
+            android:id="@+id/btnAddGoal"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_red"
+            android:src="@drawable/add_ic"
+            android:scaleType="centerInside"
+            android:contentDescription="Add Goal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- All -->
+        <TextView
+            android:id="@+id/btn_all"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_selected"
+            android:text="All"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- Active -->
+        <TextView
+            android:id="@+id/btn_active"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_unselected"
+            android:text="Active"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- Archived -->
+        <TextView
+            android:id="@+id/btn_archived"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_unselected"
+            android:text="Archived"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginHorizontal="20dp"/>
 
-</FrameLayout>
+</LinearLayout>

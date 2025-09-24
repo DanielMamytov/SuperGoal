@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_goals"
+        android:icon="@drawable/goal_ic"
+        android:title="Goals"/>
+    <item
+        android:id="@+id/nav_motivation"
+        android:icon="@drawable/ic_motivation"
+        android:title="Motivation"/>
+    <item
+        android:id="@+id/nav_analytics"
+        android:icon="@drawable/ic_analytics"
+        android:title="Analytics"/>
+    <item
+        android:id="@+id/nav_challenges"
+        android:icon="@drawable/ic_challenges"
+        android:title="Challenges"/>
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"/>
+</menu>

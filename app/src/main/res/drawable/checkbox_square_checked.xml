@@ -1,0 +1,21 @@
+<!-- res/drawable/checkbox_square_checked.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Красный квадрат -->
+    <item>
+        <shape>
+            <size android:width="24dp" android:height="24dp"/>
+            <solid android:color="#F23230"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+
+    <!-- Белая галочка по центру, через inset с drawable -->
+    <item android:gravity="center">
+        <inset
+            android:insetLeft="4dp"
+            android:insetTop="4dp"
+            android:insetRight="4dp"
+            android:insetBottom="4dp"
+            android:drawable="@drawable/ic_check_white_16"/>
+    </item>
+</layer-list>
