@@ -66,7 +66,6 @@ object ChallengeDataSource {
             title = "Craft Corner",
             category = "Other",
             durationDays = 30,
-            subgoals = dailyTasks("Touch your craft for 10 minutes", 30),
             imageRes = R.drawable.challenge_screen_ic,
         ),
         Challenge(
