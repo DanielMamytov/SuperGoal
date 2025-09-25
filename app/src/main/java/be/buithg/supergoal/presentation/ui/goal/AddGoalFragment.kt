@@ -30,7 +30,6 @@ import be.buithg.supergoal.presentation.ui.CategoryProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 import kotlinx.coroutines.launch
-import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 
 @AndroidEntryPoint
@@ -64,6 +63,7 @@ class AddGoalFragment : Fragment() {
             }
             viewModel.onImageSelected(uri.toString())
         }
+
     }
 
     override fun onCreateView(

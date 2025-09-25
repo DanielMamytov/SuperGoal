@@ -95,6 +95,7 @@ class AddGoalViewModel @Inject constructor(
             title = trimmed,
         )
         nextTempSubGoalId -= 1
+
         _uiState.update { state ->
             state.copy(subGoals = state.subGoals + newSubGoal)
         }
@@ -103,6 +104,7 @@ class AddGoalViewModel @Inject constructor(
     fun onRemoveSubGoal(id: Long) {
         _uiState.update { state ->
             state.copy(subGoals = state.subGoals.filterNot { it.uiId == id })
+
         }
     }
 
