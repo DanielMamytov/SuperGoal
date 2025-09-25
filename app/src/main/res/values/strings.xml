@@ -45,4 +45,17 @@
     <string name="analytics_category_distribution_title">Time distribution by category</string>
     <string name="analytics_empty_state">No data for analytics graph</string>
     <string name="analytics_percent_value">%1$d%%</string>
+
+    <!-- Challenges -->
+    <string name="challenge_heading">Motivation</string>
+    <string name="challenge_add_goal">Add Goal</string>
+    <string name="challenge_category_format">Category: %1$s</string>
+    <plurals name="challenge_completion_time">
+        <item quantity="one">%1$d-day challenge</item>
+        <item quantity="other">%1$d-day challenge</item>
+    </plurals>
+
+    <!-- Articles -->
+    <string name="article_heading">Motivation Stories</string>
+    <string name="article_cover_content_description">Article cover image</string>
 </resources>
