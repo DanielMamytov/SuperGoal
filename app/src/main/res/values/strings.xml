@@ -54,4 +54,9 @@
         <item quantity="one">%1$d-day challenge</item>
         <item quantity="other">%1$d-day challenge</item>
     </plurals>
+
+    <!-- Articles -->
+    <string name="article_heading">Motivation Stories</string>
+    <string name="article_cover_content_description">Article cover image</string>
+
 </resources>
