@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import be.buithg.supergoal.presentation.ui.onboarding.hasSeenOnboarding
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,15 @@ class MainActivity : AppCompatActivity() {
         val navHost = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHost.navController
+        val graph = navController.navInflater.inflate(R.navigation.nav_graph).apply {
+            val startDestination = if (hasSeenOnboarding()) {
+                R.id.nav_goals
+            } else {
+                R.id.splashFragment
+            }
+            setStartDestination(startDestination)
+        }
+        navController.setGraph(graph, null)
         bottom.setupWithNavController(navController)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

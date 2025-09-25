@@ -14,8 +14,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentSplashScreenBinding
-import be.buithg.supergoal.presentation.ui.onboarding.KEY_HAS_SEEN_ONBOARDING
-import be.buithg.supergoal.presentation.ui.onboarding.PREFS_NAME
+import be.buithg.supergoal.presentation.ui.onboarding.hasSeenOnboarding
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -91,9 +91,6 @@ class SplashFragment : Fragment() {
         }
     }
 
-    private fun Context.hasSeenOnboarding(): Boolean =
-        getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            .getBoolean(KEY_HAS_SEEN_ONBOARDING, false)
 
     private fun stopAnimations() {
         progressAnim?.cancel()

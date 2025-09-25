@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentOnBoardingBinding
+import be.buithg.supergoal.presentation.ui.onboarding.markOnboardingSeen
 
 class OnBoardingFragment : Fragment() {
 
@@ -30,13 +31,7 @@ class OnBoardingFragment : Fragment() {
             requireContext().markOnboardingSeen()
             findNavController().navigate(R.id.action_onBoardingFragment_to_nav_goals)
         }
-    }
 
-    private fun Context.markOnboardingSeen() {
-        getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-            .edit()
-            .putBoolean(KEY_HAS_SEEN_ONBOARDING, true)
-            .apply()
     }
 
     override fun onDestroyView() {
