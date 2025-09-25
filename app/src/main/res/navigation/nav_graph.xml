@@ -3,21 +3,59 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/nav_goals">
+
+    <fragment
+        android:id="@+id/nav_goals"
+        android:name="be.buithg.supergoal.presentation.ui.goal.GoalFragment"
+        android:label="fragment_goal"
+        tools:layout="@layout/fragment_goal" />
+
+    <fragment
+        android:id="@+id/nav_motivation"
+        android:name="be.buithg.supergoal.presentation.ui.article.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article" />
+
+    <fragment
+        android:id="@+id/nav_analytics"
+        android:name="be.buithg.supergoal.presentation.ui.analytic.AnalyticFragment"
+        android:label="fragment_analytic"
+        tools:layout="@layout/fragment_analytic" />
+
+    <fragment
+        android:id="@+id/nav_challenges"
+        android:name="be.buithg.supergoal.presentation.ui.challenges.ChallengeFragment"
+        android:label="fragment_challenge"
+        tools:layout="@layout/fragment_challenge" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="be.buithg.supergoal.presentation.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 
     <fragment
         android:id="@+id/splashFragment"
         android:name="be.buithg.supergoal.presentation.ui.splash.SplashFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" />
-    <fragment
-        android:id="@+id/goalFragment"
-        android:name="be.buithg.supergoal.presentation.ui.goal.GoalFragment"
-        android:label="fragment_goal"
-        tools:layout="@layout/fragment_goal" />
+
     <fragment
         android:id="@+id/addGoalFragment"
         android:name="be.buithg.supergoal.presentation.ui.goal.AddGoalFragment"
         android:label="fragment_add_goal"
         tools:layout="@layout/fragment_add_goal" />
+
+    <fragment
+        android:id="@+id/goalDetailFragment"
+        android:name="be.buithg.supergoal.presentation.ui.goal.GoalDetailFragment"
+        android:label="fragment_goal_detail"
+        tools:layout="@layout/fragment_goal_detail" />
+
+    <fragment
+        android:id="@+id/challengeDetailFragment"
+        android:name="be.buithg.supergoal.presentation.ui.challenges.ChallengeDetailFragment"
+        android:label="fragment_challenge_detail"
+        tools:layout="@layout/fragment_challenge_detail" />
 </navigation>
