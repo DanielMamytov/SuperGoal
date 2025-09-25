@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="24dp"
+    android:backgroundTint="@android:color/transparent"
+    android:clipToPadding="false"
+    android:elevation="0dp"
+    app:cardBackgroundColor="@android:color/transparent"
+    app:cardCornerRadius="24dp"
+    app:strokeColor="#33FFFFFF"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_article_card"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCover"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:contentDescription="@string/article_cover_content_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/article_im"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Article"
+            app:strokeColor="#F23230"
+            app:strokeWidth="2dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:text="Orion Varela: The Quiet Rise" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_regular"
+            android:lineSpacingExtra="4dp"
+            android:textColor="#CCFFFFFF"
+            android:textSize="14sp"
+            tools:text="I grew up in a coastal town where the wind never rested..." />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

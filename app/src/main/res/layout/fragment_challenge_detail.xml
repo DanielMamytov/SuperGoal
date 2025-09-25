@@ -1,167 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#17181F"
-
     tools:context=".presentation.ui.challenges.ChallengeDetailFragment">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/imageBackground"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/challenge_bg" />
+        android:src="@drawable/challenge_detail_screen_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <View
+        android:id="@+id/backgroundScrim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#CC17181F"
+        app:layout_constraintBottom_toBottomOf="@id/imageBackground"
+        app:layout_constraintEnd_toEndOf="@id/imageBackground"
+        app:layout_constraintStart_toStartOf="@id/imageBackground"
+        app:layout_constraintTop_toTopOf="@id/imageBackground" />
 
-        android:paddingTop="20dp">
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBack"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@android:color/transparent"
+        android:icon="@drawable/back_ic"
+        android:iconGravity="textStart"
+        android:iconPadding="8dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:text="@string/challenge_detail_back"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/contentScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="24dp">
 
-            <TextView
+            <ImageView
+                android:id="@+id/imageIllustration"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="700"
-                android:drawableStart="@drawable/back_ic"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins_bold"
-                android:text="Back"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:layout_height="220dp"
+                android:contentDescription="@string/challenge_detail_illustration_content_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/challenge_screen_ic" />
 
             <TextView
-                android:id="@+id/tvMyGoals"
+                android:id="@+id/textTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_extra_bold"
-                android:text="Sunrise Scan"
                 android:textColor="@android:color/white"
-                android:textSize="40sp" />
+                android:textSize="36sp"
+                android:textStyle="bold"
+                tools:text="Sunrise Scan" />
 
-            <FrameLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_input_goal"
-               >
-
-                <com.google.android.material.button.MaterialButton
-                    android:layout_width="100dp"
-                    android:layout_height="45dp"
-                    android:layout_gravity="end"
-                    android:text="Activ"
-                    android:backgroundTint="#00FFFFFF"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="20dp"
-                    app:strokeColor="#00A637"
-                    app:strokeWidth="1dp" />
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_gravity="end"
-                    android:visibility="gone"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/completed_ic"/>
-
-
+                android:layout_marginTop="24dp"
+                app:cardBackgroundColor="#252A34"
+                app:cardCornerRadius="22dp"
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingVertical="25dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:paddingHorizontal="20dp"
-                    android:orientation="vertical">
+                    android:paddingVertical="24dp">
 
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textCategoryLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:text="@string/challenge_detail_category_label"
+                        android:textAllCaps="true"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="14sp" />
 
-                        android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/textCategoryValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        tools:text="Body" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="Category:"
-                            android:textAllCaps="true"
-                            android:textColor="#98FFFFFF"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:text="Body"
-                            android:textAllCaps="false"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-
-                    </LinearLayout>
-
+                    <TextView
+                        android:id="@+id/textSubGoalsHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:text="@string/challenge_detail_subgoals"
+                        android:textAllCaps="true"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="14sp" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="15dp" />
-
-                    <LinearLayout
+                        android:id="@+id/listSubGoals"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="12dp"
+                        android:nestedScrollingEnabled="false"
+                        tools:listitem="@layout/item_challenge_subgoal" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Deadline:"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/textEmptySubGoals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:gravity="center"
+                        android:text="@string/challenge_detail_empty_subgoals"
+                        android:textColor="#80FFFFFF"
+                        android:textSize="14sp"
+                        android:visibility="gone" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="20dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:text="7 days from today's date"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="24dp"
+                        android:background="#1AFFFFFF" />
+
+                    <TextView
+                        android:id="@+id/textDeadlineLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/challenge_detail_deadline_label"
+                        android:textAllCaps="true"
+                        android:textColor="#99FFFFFF"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/textDeadlineValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        tools:text="Mar 15, 2025 (7 days from today)" />
                 </LinearLayout>
-            </FrameLayout>
-
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonStartChallenge"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:layout_marginHorizontal="40dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="40dp"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Start Challenge"
+                android:minHeight="0dp"
+                android:paddingVertical="14dp"
+                android:text="@string/challenge_detail_start"
                 android:textAllCaps="true"
                 android:textSize="16sp"
-                app:backgroundTint="#EE322E" />
-
+                app:cornerRadius="18dp"
+                app:iconGravity="textStart"
+                app:backgroundTint="#EE322E"
+                app:strokeColor="#4DFFFFFF"
+                app:strokeWidth="1dp" />
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-    </ScrollView>
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
