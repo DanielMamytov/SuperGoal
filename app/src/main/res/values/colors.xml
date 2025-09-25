@@ -2,4 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="analytics_progress_start">#F23230</color>
+    <color name="analytics_progress_end">#8C1D1C</color>
+    <color name="analytics_mind">#FF8A80</color>
+    <color name="analytics_body">#4DD0E1</color>
+    <color name="analytics_career">#FDD835</color>
+    <color name="analytics_money">#81C784</color>
+    <color name="analytics_social">#BA68C8</color>
+    <color name="analytics_other">#90A4AE</color>
 </resources>
