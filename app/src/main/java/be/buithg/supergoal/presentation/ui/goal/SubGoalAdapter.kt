@@ -27,8 +27,8 @@ class SubGoalAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SubGoalItemUi) = with(binding) {
-            taskCheckbox.isChecked = item.isCompleted
-            taskCheckbox.isEnabled = false
+//            taskCheckbox.isChecked = item.isCompleted
+//            taskCheckbox.isEnabled = false
             taskText.text = item.title
 //            btnDeleteSubGoal.setOnClickListener { onDeleteClicked(item.uiId) }
         }
