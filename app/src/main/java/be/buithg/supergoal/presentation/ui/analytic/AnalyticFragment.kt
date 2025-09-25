@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -17,11 +16,10 @@ import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentAnalyticBinding
 import be.buithg.supergoal.databinding.ItemCategoryProgressBinding
 import be.buithg.supergoal.domain.model.GoalCategory
-
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.math.roundToInt
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AnalyticFragment : Fragment() {
@@ -92,11 +90,13 @@ class AnalyticFragment : Fragment() {
             val color = ContextCompat.getColor(requireContext(), colorRes)
 
             itemBinding.tvTitle.text = share.category.toDisplayName()
-            itemBinding.tvPercent.text = getString(R.string.analytics_percent_value, percentValue)
-            itemBinding.progressBar.setIndicatorColor(color)
-            itemBinding.progressBar.setProgressCompat(percentValue, false)
-            binding.categoryContainer.addView(itemBinding.root)
+            itemBinding.tvLeftPercent.text = getString(R.string.analytics_percent_value, percentValue)
 
+            // Dynamic color and progress update for the categories
+            itemBinding.vLeftFill.setBackgroundColor(color)
+            itemBinding.guidelineSplit.setGuidelinePercent(percentValue / 100f)
+            itemBinding.tvRightPercent.text = getString(R.string.analytics_percent_value, 100 - percentValue)
+            binding.categoryContainer.addView(itemBinding.root)
         }
     }
 

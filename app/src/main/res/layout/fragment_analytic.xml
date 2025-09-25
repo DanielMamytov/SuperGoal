@@ -114,13 +114,7 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <LinearLayout
-            android:id="@+id/categoryContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            android:showDividers="none" />
+
 
         <TextView
             android:id="@+id/tvCategoriesEmpty"
@@ -135,6 +129,35 @@
             android:visibility="gone"
             tools:visibility="gone" />
 
+        <LinearLayout
+            android:id="@+id/categoryContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="20dp">
+
+            <!-- Category 1 -->
+            <include
+                layout="@layout/item_category_progress"
+                android:id="@+id/itemFitness"/>
+
+            <!-- Category 2 -->
+            <include
+                layout="@layout/item_category_progress"
+                android:id="@+id/itemTeam"/>
+
+            <!-- Category 3 -->
+            <include
+                layout="@layout/item_category_progress"
+                android:id="@+id/itemIndividual"/>
+
+            <!-- Category 4 -->
+            <include
+                layout="@layout/item_category_progress"
+                android:id="@+id/itemOther"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
