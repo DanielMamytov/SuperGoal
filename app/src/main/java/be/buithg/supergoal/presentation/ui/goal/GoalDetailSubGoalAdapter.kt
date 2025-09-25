@@ -27,9 +27,9 @@ class GoalDetailSubGoalAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: GoalDetailSubGoalItem) = with(binding) {
-            cbSubGoal.setOnCheckedChangeListener(null)
-            cbSubGoal.isChecked = item.isCompleted
-            cbSubGoal.setOnCheckedChangeListener { _, isChecked ->
+            taskCheckbox.setOnCheckedChangeListener(null)
+            taskCheckbox.isChecked = item.isCompleted
+            taskCheckbox.setOnCheckedChangeListener { _, isChecked ->
                 onCheckedChanged(item.id, isChecked)
             }
             tvSubGoalTitle.text = item.title
