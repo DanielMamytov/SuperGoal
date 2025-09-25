@@ -88,5 +88,10 @@
         android:id="@+id/challengeDetailFragment"
         android:name="be.buithg.supergoal.presentation.ui.challenges.ChallengeDetailFragment"
         android:label="fragment_challenge_detail"
-        tools:layout="@layout/fragment_challenge_detail" />
+        tools:layout="@layout/fragment_challenge_detail">
+        <argument
+            android:name="challengeId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>
