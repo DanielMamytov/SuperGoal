@@ -54,9 +54,23 @@
         <item quantity="one">%1$d-day challenge</item>
         <item quantity="other">%1$d-day challenge</item>
     </plurals>
+    <string name="challenge_detail_back">Back</string>
+    <string name="challenge_detail_illustration_content_description">Football challenge illustration</string>
+    <string name="challenge_detail_category_label">Category</string>
+    <string name="challenge_detail_subgoals">Sub-goals</string>
+    <string name="challenge_detail_empty_subgoals">No sub-goals available.</string>
+    <string name="challenge_detail_deadline_label">Deadline</string>
+    <string name="challenge_detail_deadline_value">%1$s (%2$s)</string>
+    <string name="challenge_detail_deadline_placeholder">—</string>
+    <plurals name="challenge_detail_deadline_suffix">
+        <item quantity="one">%d day from today</item>
+        <item quantity="other">%d days from today</item>
+    </plurals>
+    <string name="challenge_detail_start">Start Challenge</string>
+    <string name="challenge_detail_toast">Challenge goal is successfully added</string>
+    <string name="challenge_detail_missing">Challenge not found</string>
 
     <!-- Articles -->
     <string name="article_heading">Motivation Stories</string>
     <string name="article_cover_content_description">Article cover image</string>
-
 </resources>
