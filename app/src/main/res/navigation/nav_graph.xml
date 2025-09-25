@@ -58,4 +58,9 @@
         android:name="be.buithg.supergoal.presentation.ui.challenges.ChallengeDetailFragment"
         android:label="fragment_challenge_detail"
         tools:layout="@layout/fragment_challenge_detail" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="be.buithg.supergoal.presentation.ui.onboarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" />
 </navigation>

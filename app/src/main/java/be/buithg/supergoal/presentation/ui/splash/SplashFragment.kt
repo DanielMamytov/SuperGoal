@@ -13,7 +13,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentSettingsBinding
 import be.buithg.supergoal.databinding.FragmentSplashScreenBinding
-
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class SplashFragment : Fragment() {

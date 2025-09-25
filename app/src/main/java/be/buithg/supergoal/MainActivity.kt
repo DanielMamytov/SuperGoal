@@ -1,6 +1,7 @@
 package be.buithg.supergoal
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+
         val bottom = findViewById<BottomNavigationView>(R.id.bottom_nav)
         bottom.itemIconTintList = null            // ← иконки остаются цветными
         bottom.itemTextColor = resources.getColorStateList(R.color.bottom_nav_text_selector, theme)
@@ -35,8 +37,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-    }
 
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.splashFragment,
+                R.id.onBoardingFragment -> bottom.visibility = View.GONE
+
+                else -> bottom.visibility = View.VISIBLE
+            }
+        }
+    }
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
