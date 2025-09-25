@@ -1,5 +1,19 @@
-<!-- res/drawable/checkbox_square.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/checkbox_square_checked"/>
-    <item android:drawable="@drawable/checkbox_square_unchecked"/>
+    <!-- Когда выбран -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#F23230"/> <!-- Красный -->
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+
+    <!-- Когда НЕ выбран -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#252A34"/> <!-- Тёмный фон -->
+            <stroke android:width="2dp" android:color="#F23230"/> <!-- Красная обводка -->
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
 </selector>

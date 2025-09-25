@@ -1,14 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/add_goal_bg"
     tools:context=".presentation.ui.analytic.AnalyticFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:paddingTop="20dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
 
-</FrameLayout>
+
+
+    <TextView
+        android:id="@+id/tvMyGoals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_extra_bold"
+        android:text="MY GOALS"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="16dp">
+
+        <!-- All -->
+        <TextView
+            android:id="@+id/btn_all"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_selected"
+            android:text="All"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- Active -->
+        <TextView
+            android:id="@+id/btn_active"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_unselected"
+            android:text="Active"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <!-- Archived -->
+        <TextView
+            android:id="@+id/btn_archived"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/bg_tab_unselected"
+            android:text="Archived"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Overall progress"
+        android:layout_marginStart="20dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_bold"/>
+
+    <!-- Здесь добавлен прогресс -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:gravity="center"
+        >
+
+        <be.buithg.supergoal.presentation.ui.custom.CircularGradientProgressView
+            android:id="@+id/cgProgress"
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:padding="4dp"
+            android:layout_gravity="center"
+            app:cgp_progress="65"
+            app:cgp_strokeWidth="16dp"
+            app:cgp_trackColor="#242631"
+            app:cgp_startAngle="270"
+            app:cgp_gapAngle="10"
+            app:cgp_gradientStartColor="#F23230"
+            app:cgp_gradientEndColor="#8C1D1C"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvCenterPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65%"
+                android:textColor="@android:color/white"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_extra_bold"/>
+
+            <TextView
+                android:id="@+id/tvCenterSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Completed goals"
+                android:textColor="#9E9EA6"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_regular"/>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Completion percentage by categories"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"/>
+
+    <!-- Контейнер для категорий -->
+    <LinearLayout
+        android:id="@+id/categoryContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="12dp"
+        android:layout_marginHorizontal="20dp">
+
+        <!-- Category 1 -->
+        <include
+            layout="@layout/item_category_progress"
+            android:id="@+id/itemFitness"/>
+
+        <!-- Category 2 -->
+        <include
+            layout="@layout/item_category_progress"
+            android:id="@+id/itemTeam"/>
+
+        <!-- Category 3 -->
+        <include
+            layout="@layout/item_category_progress"
+            android:id="@+id/itemIndividual"/>
+
+        <!-- Category 4 -->
+        <include
+            layout="@layout/item_category_progress"
+            android:id="@+id/itemOther"/>
+
+    </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

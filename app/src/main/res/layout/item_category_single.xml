@@ -23,6 +23,7 @@
                 android:id="@+id/check_icon"
                 android:layout_width="16dp"
                 android:layout_height="16dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_check_white_16"
                 android:visibility="gone"
                 android:contentDescription="@null" />

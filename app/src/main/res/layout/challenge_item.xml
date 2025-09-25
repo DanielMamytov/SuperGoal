@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@drawable/bg_goal_item"
+    android:paddingEnd="16dp">
+
+    <!-- Обложка цели (квадрат с закруглениями) -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCover"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/app_name"
+        android:paddingVertical="10dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/CircleImageView"
+        app:strokeColor="#F23230"
+        app:strokeWidth="2dp" />
+
+    <!-- Заголовок цели -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_extra_bold"
+        android:maxLines="2"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@id/ivCover"
+        app:layout_constraintTop_toTopOf="@id/ivCover"
+        tools:text="Win Championship Trophy" />
+
+    <!-- Процент справа (красный) -->
+
+    <!-- Категория/подзаголовок -->
+
+
+    <!-- Прогресс-бар -->
+
+    <!-- Дата дедлайна -->
+    <TextView
+        android:id="@+id/tvDeadline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:elevation="1dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="Body"
+        android:textColor="#8FFFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivCover"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|center_vertical"
+        android:inputType="textMultiLine"
+        android:scrollHorizontally="false"
+        android:singleLine="false"
+        android:text="Body"
+        android:layout_marginBottom="15dp"
+        android:textColor="#8FFFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/materialButton"
+        app:layout_constraintStart_toEndOf="@+id/ivCover"
+        tools:text="7 days" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/play_ic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#F23230"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingVertical="5dp"
+        android:text="Add Goal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

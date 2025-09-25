@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Внешняя рамка -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent"/>
+            <stroke android:width="4dp" android:color="#39393F"/>
+            <corners android:radius="999dp"/>
+        </shape>
+    </item>
+
+    <!-- Трек (незаполненная часть), смещаем внутрь на ширину бордера -->
+    <item
+        android:id="@android:id/background"
+        android:top="4dp"
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#2B0202"/>
+            <corners android:radius="999dp"/>
+        </shape>
+    </item>
+
+    <!-- Заполненная часть -->
+    <item
+        android:id="@android:id/progress"
+        android:top="4dp"
+        android:bottom="4dp"
+        android:left="4dp"
+        android:right="4dp">
+        <clip>
+            <shape android:shape="rectangle">
+                <!-- можно заменить на <solid android:color="#F23230"/> если не нужен мягкий блик -->
+                <gradient
+                    android:type="linear"
+                    android:angle="90"
+                    android:startColor="#F23230"
+                android:endColor="#CD0200"/>
+                <corners android:radius="999dp"/>
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

@@ -1,14 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#17181F"
+
     tools:context=".presentation.ui.challenges.ChallengeDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:scaleType="centerCrop"
+        android:src="@drawable/challenge_bg" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="700"
+                android:drawableStart="@drawable/back_ic"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Back"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvMyGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_extra_bold"
+                android:text="Sunrise Scan"
+                android:textColor="@android:color/white"
+                android:textSize="40sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input_goal"
+               >
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="end"
+                    android:text="Activ"
+                    android:backgroundTint="#00FFFFFF"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="20dp"
+                    app:strokeColor="#00A637"
+                    app:strokeWidth="1dp" />
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_gravity="end"
+                    android:visibility="gone"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/completed_ic"/>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingVertical="25dp"
+                    android:paddingHorizontal="20dp"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Category:"
+                            android:textAllCaps="true"
+                            android:textColor="#98FFFFFF"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text="Body"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+
+                    </LinearLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Deadline:"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="7 days from today's date"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Start Challenge"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                app:backgroundTint="#EE322E" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </FrameLayout>

@@ -12,9 +12,11 @@
         android:id="@+id/cbMark"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:button="@drawable/checkbox_square"
+        android:button="@null"
+        android:background="@drawable/checkbox_square"
         android:focusable="false"
         android:clickable="false"/>
+
 
     <TextView
         android:id="@+id/tvTitle"
