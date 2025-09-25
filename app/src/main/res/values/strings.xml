@@ -37,4 +37,12 @@
     <string name="action_delete">Delete</string>
     <string name="action_confirm">Confirm</string>
     <string name="toast_goal_deleted">Goal is successfully deleted</string>
+
+    <!-- Analytics -->
+    <string name="analytics_screen_title">GOALS ANALYTICS</string>
+    <string name="analytics_overall_progress_title">Overall progress</string>
+    <string name="analytics_overall_progress_subtitle">Completed marks</string>
+    <string name="analytics_category_distribution_title">Time distribution by category</string>
+    <string name="analytics_empty_state">No data for analytics graph</string>
+    <string name="analytics_percent_value">%1$d%%</string>
 </resources>

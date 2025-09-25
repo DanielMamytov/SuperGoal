@@ -8,4 +8,5 @@
         <attr name="cgp_gradientStartColor" format="color"/>
         <attr name="cgp_gradientEndColor" format="color"/>
     </declare-styleable>
+
 </resources>
