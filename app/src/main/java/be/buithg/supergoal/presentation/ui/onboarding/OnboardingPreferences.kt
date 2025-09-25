@@ -15,3 +15,4 @@ internal fun Context.markOnboardingSeen() {
         .putBoolean(KEY_HAS_SEEN_ONBOARDING, true)
         .apply()
 }
+

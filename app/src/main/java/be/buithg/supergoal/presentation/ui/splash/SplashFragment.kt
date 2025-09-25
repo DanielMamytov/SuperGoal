@@ -2,6 +2,7 @@ package be.buithg.supergoal.presentation.ui.splash
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentSplashScreenBinding
 import be.buithg.supergoal.presentation.ui.onboarding.hasSeenOnboarding
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -88,6 +90,7 @@ class SplashFragment : Fragment() {
             findNavController().navigate(nextDestination)
         }
     }
+
 
     private fun stopAnimations() {
         progressAnim?.cancel()

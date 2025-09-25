@@ -1,5 +1,6 @@
 package be.buithg.supergoal.presentation.ui.onboarding
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,7 @@ class OnBoardingFragment : Fragment() {
             requireContext().markOnboardingSeen()
             findNavController().navigate(R.id.action_onBoardingFragment_to_nav_goals)
         }
+
     }
 
     override fun onDestroyView() {
