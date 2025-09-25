@@ -139,18 +139,18 @@ class GoalDetailFragment : Fragment() {
                 displayedImageUri = null
                 photoPreview.setImageDrawable(null)
             }
-            photoPlaceholder.isVisible = true
+            photoPreview.isVisible = true
         } else if (displayedImageUri != state.imageUri) {
             val uri = runCatching { Uri.parse(state.imageUri) }.getOrNull()
             if (uri != null) {
                 displayedImageUri = state.imageUri
                 photoPreview.setImageURI(null)
                 photoPreview.setImageURI(uri)
-                photoPlaceholder.isVisible = false
+                photoPreview.isVisible = false
             } else {
                 displayedImageUri = null
                 photoPreview.setImageDrawable(null)
-                photoPlaceholder.isVisible = true
+                photoPreview.isVisible = true
             }
         }
     }

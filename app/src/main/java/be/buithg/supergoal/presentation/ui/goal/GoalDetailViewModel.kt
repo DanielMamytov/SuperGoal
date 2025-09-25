@@ -81,7 +81,7 @@ class GoalDetailViewModel @Inject constructor(
         val formattedDeadline = synchronized(dateFormatter) {
             dateFormatter.format(Date(deadlineMillis))
         }
-        val subGoalItems = subGoals.map(SubGoal::toUiItem)
+        val subGoalItems = subGoals.map { it.toUiItem() }
         val displayCategory = category.toDisplayName()
         return GoalDetailUiState(
             goalId = id,

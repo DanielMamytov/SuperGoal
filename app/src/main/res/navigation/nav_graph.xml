@@ -71,7 +71,6 @@
         tools:layout="@layout/fragment_add_goal">
         <argument
             android:name="goalId"
-            android:defaultValue="0"
             app:argType="long" />
     </fragment>
 

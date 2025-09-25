@@ -1,192 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/add_goal_bg"
     android:fillViewport="true"
     tools:context=".presentation.ui.goal.GoalDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:paddingTop="20dp"
-        android:paddingBottom="32dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvMyGoals"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_extra_bold"
-            android:text="@string/goal_details_title"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="36sp" />
+    <TextView
+        android:id="@+id/tvMyGoals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppins_extra_bold"
+        android:text="Goal Details"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:paddingVertical="20dp"
+        android:background="@drawable/bg_input_goal"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/goal_card"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_input_goal"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal">
 
-            <FrameLayout
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/photo_preview"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_gravity="center_horizontal">
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+            app:shapeAppearanceOverlay="@style/CircleImageView"/>
 
-                <ImageView
-                    android:id="@+id/photo_placeholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_circle_fill"
-                    android:contentDescription="@string/add_goal_photo_content_description"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/goal_ic" />
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/photo_preview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_circle_fill"
-                    android:contentDescription="@string/add_goal_photo_content_description"
-                    android:scaleType="centerCrop"
-                    app:shapeAppearanceOverlay="@style/CircleImageView" />
-
-            </FrameLayout>
-
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_bold"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                tools:text="Daily Training Streak" />
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/category_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="#87FFFFFF"
-                android:textSize="14sp"
-                tools:text="Category: Fitness" />
+                <TextView
+                    android:id="@+id/title_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Daily Training Streak"/>
+
+                <TextView
+                    android:id="@+id/category_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fitness"
+                    android:textSize="14sp"
+                    android:textColor="#87FFFFFF"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvPercent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_extra_bold"
-                android:gravity="center_horizontal"
-                android:textColor="@android:color/white"
-                android:textSize="32sp"
-                tools:text="65.0%" />
+                android:textColor="#FFFFFF"
+                android:textSize="35sp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/pbProgress"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="65%" />
 
             <ProgressBar
                 android:id="@+id/pbProgress"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginBottom="16dp"
-                android:max="1000"
-                android:progress="0"
-                android:progressDrawable="@drawable/pb_goal" />
-
-            <TextView
-                android:id="@+id/tvDeadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                tools:text="Deadline: Mar 15, 2025" />
+                android:max="100"
+                android:layout_marginTop="10dp"
+                android:progress="65"
+                android:progressDrawable="@drawable/pb_goal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivCover"
+                app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
         </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:padding="15dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input_goal">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subGoals"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvDeadline"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginVertical="15dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/white"
+        android:text="Deadline: Mar 15, 2025"/>
 
         <TextView
-            android:id="@+id/tasks_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:fontFamily="@font/poppins_bold"
-            android:text="@string/goal_details_tasks_header"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
-        <FrameLayout
+            android:id="@+id/tvEmptySubGoals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_input_goal"
-            android:padding="16dp">
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/add_goal_empty_subgoals"
+            android:textColor="#87FFFFFF"
+            android:textSize="16sp"
+            android:visibility="gone" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/subGoals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/item_detail_subgoal" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp">
 
-            <TextView
-                android:id="@+id/tvEmptySubGoals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_regular"
-                android:gravity="center"
-                android:text="@string/goal_details_empty_subgoals"
-                android:textColor="#87FFFFFF"
-                android:textSize="16sp"
-                android:visibility="gone"
-                tools:visibility="visible" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#00FFFFFF"
+            app:strokeWidth="1dp"
+            android:fontFamily="@font/poppins_bold"
+            app:strokeColor="@color/white"
+            android:textSize="16sp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="60dp"
+            android:text="Edit"/>
 
-        </FrameLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins_bold"
+            android:backgroundTint="#F23230"
+            android:layout_height="60dp"
+            android:text="Delete"/>
+    </LinearLayout>
 
-        <LinearLayout
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirm_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/edit_button"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:backgroundTint="#00FFFFFF"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/action_edit"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                app:strokeColor="@android:color/white"
-                app:strokeWidth="1dp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/deleteButton"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:backgroundTint="#F23230"
-                android:fontFamily="@font/poppins_bold"
-                android:text="@string/action_delete"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:backgroundTint="#F23230"
+            android:layout_height="60dp"
+            android:text="Confirm"/>
     </LinearLayout>
 
 </ScrollView>
