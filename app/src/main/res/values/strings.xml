@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SuperGoal</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="onboarding_title">Chart your path</string>
+    <string name="onboarding_subtitle">Chart your constellations of skills, practice in short bursts, and collect stars as you grow.</string>
+    <string name="onboarding_cta">Get Started</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
