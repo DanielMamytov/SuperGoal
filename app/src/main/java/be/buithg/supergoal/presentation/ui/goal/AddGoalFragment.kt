@@ -49,9 +49,21 @@ class AddGoalFragment : Fragment() {
     private val hintTextColor: Int by lazy { Color.parseColor("#87FFFFFF") }
 
     private val pickImageLauncher = registerForActivityResult(
-        ActivityResultContracts.GetContent(),
+        ActivityResultContracts.OpenDocument(),
     ) { uri ->
-        uri?.let { viewModel.onImageSelected(it.toString()) }
+        if (uri != null) {
+            val resolver = requireContext().contentResolver
+            try {
+                resolver.takePersistableUriPermission(
+                    uri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION,
+                )
+            } catch (securityException: SecurityException) {
+                // Best effort to persist URI access, ignore if it already exists or can't be granted.
+            }
+            viewModel.onImageSelected(uri.toString())
+        }
+
     }
 
     override fun onCreateView(
@@ -115,7 +127,8 @@ class AddGoalFragment : Fragment() {
             viewModel.onGoalNameChanged(text?.toString().orEmpty())
         }
         etCalendar.setOnClickListener { showDatePicker() }
-        btnAddPhoto.setOnClickListener { pickImageLauncher.launch("image/*") }
+        btnAddPhoto.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*")) }
+
         buttonSubGoal.setOnClickListener { showAddSubGoalDialog() }
         buttonSaveGoal.setOnClickListener { viewModel.onSaveGoal() }
     }
@@ -183,6 +196,7 @@ class AddGoalFragment : Fragment() {
             setTextColor(hintTextColor)
         }
     }
+
 
     private fun updateSubGoals(subGoals: List<SubGoalItemUi>) = with(binding) {
         subGoalAdapter.submitList(subGoals)

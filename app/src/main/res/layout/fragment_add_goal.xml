@@ -9,12 +9,9 @@
     android:fillViewport="true"
     android:paddingTop="20dp"
 
-    tools:context=".presentation.ui.goal.AddGoalFragment">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
 
         <TextView
@@ -25,16 +22,15 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_extra_bold"
             android:text="@string/my_goals"
-
             android:textColor="@android:color/white"
             android:textSize="40sp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="24dp"
-
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical">
@@ -51,13 +47,11 @@
                 android:elevation="12dp"
                 android:translationZ="12dp">
 
-
-                <com.google.android.material.imageview.ShapeableImageView
+                <ImageView
                     android:id="@+id/photo_preview"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_gravity="center"
-                    app:shapeAppearanceOverlay="@style/CircleImageView"
                     android:background="@drawable/bg_circle_fill"
                     android:contentDescription="@string/add_goal_photo_content_description"
                     android:scaleType="centerCrop" />
@@ -70,7 +64,6 @@
                     android:background="@drawable/bg_circle_fill"
                     android:scaleType="centerInside"
                     android:src="@drawable/goal_ic" />
-
 
                 <FrameLayout
                     android:id="@+id/btn_add_photo"
@@ -100,7 +93,6 @@
                 android:background="@drawable/bg_input_goal"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="@string/hint_goal_name"
-
                 android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="textCapSentences|textPersonName"
@@ -127,18 +119,15 @@
                 android:paddingEnd="20dp"
                 android:paddingBottom="18dp"
                 android:text="@string/deadline_placeholder"
-
                 android:textAllCaps="false"
                 android:textColor="#87FFFFFF"
                 android:textSize="18sp" />
-
 
             <LinearLayout
                 android:id="@+id/sectionCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/tvCategoryTitle"
@@ -153,11 +142,9 @@
                     android:paddingEnd="20dp"
                     android:paddingBottom="18dp"
                     android:text="@string/category_placeholder"
-
                     android:textAllCaps="false"
                     android:textColor="#87FFFFFF"
                     android:textSize="18sp" />
-
 
                 <LinearLayout
                     android:id="@+id/panelCategory"
@@ -169,13 +156,11 @@
                     android:paddingTop="30dp"
                     android:visibility="gone">
 
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:nestedScrollingEnabled="false"
-
                         android:overScrollMode="never"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
