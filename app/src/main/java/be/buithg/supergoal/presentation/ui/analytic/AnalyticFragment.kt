@@ -52,6 +52,7 @@ class AnalyticFragment : Fragment() {
         _binding = null
     }
 
+
     private fun collectUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -71,6 +72,7 @@ class AnalyticFragment : Fragment() {
             updateOverallBar(completedPercent, remainingPercent)
             tvOverallPercent.text = getString(R.string.analytics_percent_value, completedPercent)
             tvOverallRemainingPercent.text = getString(R.string.analytics_percent_value, remainingPercent)
+
         }
 
         val hasCategoryData = state.hasCategoryShares
@@ -93,7 +95,6 @@ class AnalyticFragment : Fragment() {
             legendContainer.removeAllViews()
         }
     }
-
     private fun FragmentAnalyticBinding.updateOverallBar(
         completedPercent: Int,
         remainingPercent: Int,
