@@ -38,45 +38,29 @@ class AnalyticViewModel @Inject constructor(
         }
 
         val shares = goals
-            .filter(Goal::isCompleted)
-            .mapNotNull { goal ->
-                val endTime = goal.archivedAtMillis ?: goal.deadlineMillis
-                val duration = (endTime - goal.createdAtMillis).coerceAtLeast(0L)
-                if (duration == 0L) {
-                    null
-                } else {
-                    goal.category to duration
+            .groupBy(Goal::category)
+            .map { (category, categoryGoals) ->
+                val totalSubGoals = categoryGoals.sumOf { it.subGoals.size }
+                val completedSubGoals = categoryGoals.sumOf { goal ->
+                    goal.subGoals.count { subGoal -> subGoal.isCompleted }
                 }
-            }
-            .groupBy(
-                keySelector = { (category, _) -> category },
-                valueTransform = { (_, duration) -> duration },
-            )
-            .mapNotNull { (category, durations) ->
-                val totalDuration = durations.sum()
-                if (totalDuration <= 0L) {
-                    null
-                } else {
-                    category to totalDuration
+
+                val percentage = when {
+                    totalSubGoals > 0 ->
+                        (completedSubGoals.toDouble() / totalSubGoals.toDouble()) * 100
+
+                    categoryGoals.isNotEmpty() ->
+                        categoryGoals.map(Goal::progress).average()
+
+                    else -> 0.0
                 }
+
+                CategoryShare(
+                    category = category,
+                    percentage = percentage.coerceIn(0.0, 100.0),
+                )
             }
-            .let { groupedDurations ->
-                val grandTotal = groupedDurations.sumOf { (_, duration) -> duration }
-                if (grandTotal <= 0L) {
-                    emptyList()
-                } else {
-                    groupedDurations
-                        .map { (category, duration) ->
-                            val percent = (duration.toDouble() / grandTotal.toDouble()) * 100
-                            CategoryShare(
-                                category = category,
-                                percentage = percent,
-                            )
-                        }
-                        .filter { it.percentage > 0.0 }
-                        .sortedByDescending(CategoryShare::percentage)
-                }
-            }
+            .sortedByDescending(CategoryShare::percentage)
 
         return AnalyticUiState(
             hasOverallProgress = hasOverallProgress,

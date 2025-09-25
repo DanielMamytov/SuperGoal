@@ -1,6 +1,6 @@
 package be.buithg.supergoal.presentation.ui.analytic
 
-import android.content.res.ColorStateList
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -83,6 +83,8 @@ class AnalyticFragment : Fragment() {
     private fun renderCategoryDistribution(state: AnalyticUiState) {
         val inflater = LayoutInflater.from(requireContext())
         binding.categoryContainer.removeAllViews()
+        val cornerRadius = resources.getDimension(R.dimen.category_progress_corner_radius)
+
         state.categoryShares.forEach { share ->
             val itemBinding = ItemCategoryProgressBinding.inflate(inflater, binding.categoryContainer, false)
             val percentValue = share.percentage.roundToInt().coerceIn(0, 100)
@@ -93,7 +95,22 @@ class AnalyticFragment : Fragment() {
             itemBinding.tvLeftPercent.text = getString(R.string.analytics_percent_value, percentValue)
 
             // Dynamic color and progress update for the categories
-            itemBinding.vLeftFill.setBackgroundColor(color)
+            val rightCornerRadius = if (percentValue >= 100) cornerRadius else 0f
+            val fillDrawable = GradientDrawable().apply {
+                shape = GradientDrawable.RECTANGLE
+                setColor(color)
+                cornerRadii = floatArrayOf(
+                    cornerRadius,
+                    cornerRadius,
+                    rightCornerRadius,
+                    rightCornerRadius,
+                    rightCornerRadius,
+                    rightCornerRadius,
+                    cornerRadius,
+                    cornerRadius,
+                )
+            }
+            itemBinding.vLeftFill.background = fillDrawable
             itemBinding.guidelineSplit.setGuidelinePercent(percentValue / 100f)
             itemBinding.tvRightPercent.text = getString(R.string.analytics_percent_value, 100 - percentValue)
             binding.categoryContainer.addView(itemBinding.root)
