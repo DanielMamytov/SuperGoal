@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/add_goal_bg"
     android:fillViewport="true"
     android:paddingTop="20dp"
@@ -51,18 +52,18 @@
                 android:translationZ="12dp">
 
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/photo_preview"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_gravity="center"
+                    app:shapeAppearanceOverlay="@style/CircleImageView"
                     android:background="@drawable/bg_circle_fill"
                     android:contentDescription="@string/add_goal_photo_content_description"
                     android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/photo_placeholder"
-
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
