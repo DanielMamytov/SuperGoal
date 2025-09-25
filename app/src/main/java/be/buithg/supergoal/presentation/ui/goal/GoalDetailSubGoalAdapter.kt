@@ -2,6 +2,7 @@ package be.buithg.supergoal.presentation.ui.goal
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +19,7 @@ class GoalDetailSubGoalAdapter(
     }
 
     override fun onBindViewHolder(holder: SubGoalViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position == itemCount - 1)
     }
 
     class SubGoalViewHolder(
@@ -26,13 +27,23 @@ class GoalDetailSubGoalAdapter(
         private val onCheckedChanged: (Long, Boolean) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: GoalDetailSubGoalItem) = with(binding) {
-            cbSubGoal.setOnCheckedChangeListener(null)
-            cbSubGoal.isChecked = item.isCompleted
-            cbSubGoal.setOnCheckedChangeListener { _, isChecked ->
-                onCheckedChanged(item.id, isChecked)
-            }
+        fun bind(item: GoalDetailSubGoalItem, isLast: Boolean) = with(binding) {
             tvSubGoalTitle.text = item.title
+
+            val isChecked = item.isCompleted
+            checkContainer.isSelected = isChecked
+            checkIcon.isVisible = isChecked
+            divider.isVisible = !isLast
+
+            val clickListener = {
+                val newChecked = !checkContainer.isSelected
+                checkContainer.isSelected = newChecked
+                checkIcon.isVisible = newChecked
+                onCheckedChanged(item.id, newChecked)
+            }
+
+            root.setOnClickListener { clickListener() }
+            checkContainer.setOnClickListener { clickListener() }
         }
     }
 
