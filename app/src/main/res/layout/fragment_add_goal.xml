@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/add_goal_bg"
-    android:orientation="vertical"
+    android:fillViewport="true"
+    android:paddingTop="20dp"
+
     tools:context=".presentation.ui.goal.AddGoalFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
         <TextView
@@ -21,7 +23,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_extra_bold"
-            android:text="MY GOALS"
+            android:text="@string/my_goals"
+
             android:textColor="@android:color/white"
             android:textSize="40sp" />
 
@@ -29,6 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="24dp"
+
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical">
@@ -43,27 +48,29 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:elevation="12dp"
-                android:translationZ="12dp">  <!-- ВАЖНО: тянем круг вниз поверх поля -->
+                android:translationZ="12dp">
 
-                <!-- Внутренний круг -->
+
                 <ImageView
                     android:id="@+id/photo_preview"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_gravity="center"
                     android:background="@drawable/bg_circle_fill"
+                    android:contentDescription="@string/add_goal_photo_content_description"
                     android:scaleType="centerCrop" />
 
-                <!-- Иконка-плейсхолдер -->
                 <ImageView
+                    android:id="@+id/photo_placeholder"
+
                     android:layout_width="46dp"
                     android:layout_height="46dp"
                     android:layout_gravity="center"
                     android:background="@drawable/bg_circle_fill"
                     android:scaleType="centerInside"
-                    android:src="@drawable/image_placeholder" />
+                    android:src="@drawable/goal_ic" />
 
-                <!-- Бейдж с плюсом -->
+
                 <FrameLayout
                     android:id="@+id/btn_add_photo"
                     android:layout_width="30dp"
@@ -91,7 +98,8 @@
                 android:layout_marginTop="0dp"
                 android:background="@drawable/bg_input_goal"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="Goal Name"
+                android:hint="@string/hint_goal_name"
+
                 android:imeOptions="actionNext"
                 android:includeFontPadding="false"
                 android:inputType="textCapSentences|textPersonName"
@@ -117,26 +125,20 @@
                 android:paddingTop="18dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="18dp"
-                android:text="Deadline date"
+                android:text="@string/deadline_placeholder"
+
                 android:textAllCaps="false"
                 android:textColor="#87FFFFFF"
                 android:textSize="18sp" />
 
-            <!-- res/layout/view_category_spinner.xml -->
 
-
-            <!-- внутри AddGoalScreen -->
-
-
-            <!-- Шапка "Category:" как в макете -->
-            <!-- Контейнер секции Category -->
             <LinearLayout
                 android:id="@+id/sectionCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Твоя кнопка-заголовок -->
+
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/tvCategoryTitle"
                     android:layout_width="match_parent"
@@ -149,12 +151,13 @@
                     android:paddingTop="18dp"
                     android:paddingEnd="20dp"
                     android:paddingBottom="18dp"
-                    android:text="Category:"
+                    android:text="@string/category_placeholder"
+
                     android:textAllCaps="false"
                     android:textColor="#87FFFFFF"
                     android:textSize="18sp" />
 
-                <!-- Инлайн панель со списком (изначально скрыта) -->
+
                 <LinearLayout
                     android:id="@+id/panelCategory"
                     android:layout_width="match_parent"
@@ -163,47 +166,87 @@
                     android:background="@drawable/bg_dropdown_panel"
                     android:orientation="vertical"
                     android:paddingTop="30dp"
-                    android:visibility="visible">
+                    android:visibility="gone">
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvCategory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+
                         android:overScrollMode="never"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:paddingBottom="12dp" />
-                    <!-- ВАЖНО: без paddingTop => нет «отступа сверху у 1-го айтема» -->
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- Само поле-анкёр (выглядит как edittext, открывает список ПОД ним) -->
+            <TextView
+                android:id="@+id/tvSubGoalsHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/subgoals_header"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSubGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <TextView
+                android:id="@+id/tvEmptySubGoals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/add_goal_empty_subgoals"
+                android:textColor="#87FFFFFF"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSubGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_input_goal"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="20dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="18dp"
+                android:text="@string/add_subgoal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSaveGoal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_badge_solid"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingStart="20dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="18dp"
+                android:text="@string/save_goal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
         </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonSubGoal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#39393F"
-            android:fontFamily="@font/poppins_bold"
-            android:minWidth="160dp"
-            android:text="Add Subgoal"
-            android:textSize="16sp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/saveGoal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="60dp"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="#EE322E"
-            android:fontFamily="@font/poppins_bold"
-            android:text="Save Goal"
-            android:textSize="20sp" />
     </LinearLayout>
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
+
