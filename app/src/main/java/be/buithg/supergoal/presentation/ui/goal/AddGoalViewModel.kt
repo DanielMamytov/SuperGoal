@@ -1,6 +1,7 @@
 package be.buithg.supergoal.presentation.ui.goal
 
 import androidx.annotation.StringRes
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import be.buithg.supergoal.R
@@ -10,11 +11,11 @@ import be.buithg.supergoal.domain.model.SubGoal
 import be.buithg.supergoal.domain.usecase.GoalUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlin.random.Random
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ import java.util.Locale
 @HiltViewModel
 class AddGoalViewModel @Inject constructor(
     private val goalUseCases: GoalUseCases,
+    savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     private val dateFormatter = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
@@ -34,6 +36,14 @@ class AddGoalViewModel @Inject constructor(
 
     private val eventsChannel = Channel<AddGoalEvent>(Channel.BUFFERED)
     val events = eventsChannel.receiveAsFlow()
+
+    private val editingGoalId: Long? = savedStateHandle.get<Long>("goalId")?.takeIf { it != 0L }
+
+    private var nextTempSubGoalId = -1L
+
+    init {
+        editingGoalId?.let(::loadGoal)
+    }
 
     fun onGoalNameChanged(name: String) {
         _uiState.update { state -> state.copy(goalName = name) }
@@ -80,9 +90,12 @@ class AddGoalViewModel @Inject constructor(
         val trimmed = title.trim()
         if (trimmed.isEmpty()) return
         val newSubGoal = SubGoalItemUi(
-            id = Random.nextLong(Long.MIN_VALUE, Long.MAX_VALUE),
+            uiId = nextTempSubGoalId,
+            subGoalId = null,
             title = trimmed,
         )
+        nextTempSubGoalId -= 1
+
         _uiState.update { state ->
             state.copy(subGoals = state.subGoals + newSubGoal)
         }
@@ -90,7 +103,8 @@ class AddGoalViewModel @Inject constructor(
 
     fun onRemoveSubGoal(id: Long) {
         _uiState.update { state ->
-            state.copy(subGoals = state.subGoals.filterNot { it.id == id })
+            state.copy(subGoals = state.subGoals.filterNot { it.uiId == id })
+
         }
     }
 
@@ -109,13 +123,20 @@ class AddGoalViewModel @Inject constructor(
         }
 
         val goal = Goal(
+            id = state.goalId ?: 0L,
             title = title,
             category = category,
             deadlineMillis = deadline,
             imageUri = state.imageUri,
-            createdAtMillis = System.currentTimeMillis(),
+            createdAtMillis = state.createdAtMillis ?: System.currentTimeMillis(),
+            archivedAtMillis = state.archivedAtMillis,
             subGoals = state.subGoals.map { subGoal ->
-                SubGoal(title = subGoal.title)
+                SubGoal(
+                    id = subGoal.subGoalId ?: 0L,
+                    goalId = state.goalId ?: 0L,
+                    title = subGoal.title,
+                    isCompleted = subGoal.isCompleted,
+                )
             },
         )
 
@@ -129,9 +150,46 @@ class AddGoalViewModel @Inject constructor(
     private fun sendMessage(@StringRes messageRes: Int) {
         eventsChannel.trySend(AddGoalEvent.ShowMessage(messageRes))
     }
+
+    private fun loadGoal(goalId: Long) {
+        viewModelScope.launch {
+            val goal = goalUseCases.observeGoalById(goalId)
+                .firstOrNull()
+                ?: return@launch
+            val formattedDate = synchronized(dateFormatter) {
+                dateFormatter.format(Calendar.getInstance().apply {
+                    timeInMillis = goal.deadlineMillis
+                }.time)
+            }
+            val subGoals = goal.subGoals.map { subGoal ->
+                SubGoalItemUi(
+                    uiId = subGoal.id,
+                    subGoalId = subGoal.id,
+                    title = subGoal.title,
+                    isCompleted = subGoal.isCompleted,
+                )
+            }
+            nextTempSubGoalId = (subGoals.minOfOrNull { it.uiId } ?: 0L).coerceAtMost(0L) - 1
+            _uiState.update {
+                it.copy(
+                    goalId = goal.id,
+                    goalName = goal.title,
+                    selectedCategory = goal.category,
+                    selectedCategoryTitle = null,
+                    deadlineMillis = goal.deadlineMillis,
+                    deadlineText = formattedDate,
+                    subGoals = subGoals,
+                    imageUri = goal.imageUri,
+                    createdAtMillis = goal.createdAtMillis,
+                    archivedAtMillis = goal.archivedAtMillis,
+                )
+            }
+        }
+    }
 }
 
 data class AddGoalUiState(
+    val goalId: Long? = null,
     val goalName: String = "",
     val selectedCategory: GoalCategory? = null,
     val selectedCategoryTitle: String? = null,
@@ -139,10 +197,13 @@ data class AddGoalUiState(
     val deadlineText: String = "",
     val subGoals: List<SubGoalItemUi> = emptyList(),
     val imageUri: String? = null,
+    val createdAtMillis: Long? = null,
+    val archivedAtMillis: Long? = null,
 )
 
 data class SubGoalItemUi(
-    val id: Long,
+    val uiId: Long,
+    val subGoalId: Long?,
     val title: String,
     val isCompleted: Boolean = false,
 )
