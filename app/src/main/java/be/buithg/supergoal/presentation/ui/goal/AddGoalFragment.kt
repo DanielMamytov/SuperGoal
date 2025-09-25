@@ -30,7 +30,6 @@ import be.buithg.supergoal.presentation.ui.CategoryProvider
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 import kotlinx.coroutines.launch
-import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContracts
 
 @AndroidEntryPoint
@@ -64,6 +63,7 @@ class AddGoalFragment : Fragment() {
             }
             viewModel.onImageSelected(uri.toString())
         }
+
     }
 
     override fun onCreateView(
@@ -128,6 +128,7 @@ class AddGoalFragment : Fragment() {
         }
         etCalendar.setOnClickListener { showDatePicker() }
         btnAddPhoto.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*")) }
+
         buttonSubGoal.setOnClickListener { showAddSubGoalDialog() }
         buttonSaveGoal.setOnClickListener { viewModel.onSaveGoal() }
     }
@@ -195,6 +196,7 @@ class AddGoalFragment : Fragment() {
             setTextColor(hintTextColor)
         }
     }
+
 
     private fun updateSubGoals(subGoals: List<SubGoalItemUi>) = with(binding) {
         subGoalAdapter.submitList(subGoals)
