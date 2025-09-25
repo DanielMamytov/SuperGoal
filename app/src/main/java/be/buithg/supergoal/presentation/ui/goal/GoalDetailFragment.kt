@@ -5,21 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import be.buithg.supergoal.R
-import be.buithg.supergoal.databinding.FragmentArticleBinding
+import androidx.navigation.fragment.navArgs
 import be.buithg.supergoal.databinding.FragmentGoalDetailBinding
 
 class GoalDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentGoalDetailBinding
+    private var _binding: FragmentGoalDetailBinding? = null
+    private val binding get() = _binding!!
+
+    private val args: GoalDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentGoalDetailBinding.inflate(inflater, container, false)
+    ): View {
+        _binding = FragmentGoalDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.root.tag = args.goalId
+        // TODO: consume goalId when detail screen is implemented
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

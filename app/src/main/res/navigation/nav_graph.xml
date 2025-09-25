@@ -9,7 +9,16 @@
         android:id="@+id/nav_goals"
         android:name="be.buithg.supergoal.presentation.ui.goal.GoalFragment"
         android:label="fragment_goal"
-        tools:layout="@layout/fragment_goal" />
+        tools:layout="@layout/fragment_goal">
+
+        <action
+            android:id="@+id/action_nav_goals_to_addGoalFragment"
+            app:destination="@id/addGoalFragment" />
+
+        <action
+            android:id="@+id/action_nav_goals_to_goalDetailFragment"
+            app:destination="@id/goalDetailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_motivation"
@@ -51,7 +60,11 @@
         android:id="@+id/goalDetailFragment"
         android:name="be.buithg.supergoal.presentation.ui.goal.GoalDetailFragment"
         android:label="fragment_goal_detail"
-        tools:layout="@layout/fragment_goal_detail" />
+        tools:layout="@layout/fragment_goal_detail">
+        <argument
+            android:name="goalId"
+            app:argType="long" />
+    </fragment>
 
     <fragment
         android:id="@+id/challengeDetailFragment"
