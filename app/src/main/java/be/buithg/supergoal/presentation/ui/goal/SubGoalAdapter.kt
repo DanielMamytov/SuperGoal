@@ -30,13 +30,13 @@ class SubGoalAdapter(
             cbSubGoal.isChecked = item.isCompleted
             cbSubGoal.isEnabled = false
             tvSubGoalTitle.text = item.title
-            btnDeleteSubGoal.setOnClickListener { onDeleteClicked(item.id) }
+            btnDeleteSubGoal.setOnClickListener { onDeleteClicked(item.uiId) }
         }
     }
 
     private object DiffCallback : DiffUtil.ItemCallback<SubGoalItemUi>() {
         override fun areItemsTheSame(oldItem: SubGoalItemUi, newItem: SubGoalItemUi): Boolean =
-            oldItem.id == newItem.id
+            oldItem.uiId == newItem.uiId
 
         override fun areContentsTheSame(oldItem: SubGoalItemUi, newItem: SubGoalItemUi): Boolean =
             oldItem == newItem

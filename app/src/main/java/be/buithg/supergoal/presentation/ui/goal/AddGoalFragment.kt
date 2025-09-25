@@ -129,7 +129,6 @@ class AddGoalFragment : Fragment() {
         }
         etCalendar.setOnClickListener { showDatePicker() }
         btnAddPhoto.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*")) }
-
         buttonSubGoal.setOnClickListener { showAddSubGoalDialog() }
         buttonSaveGoal.setOnClickListener { viewModel.onSaveGoal() }
     }
@@ -138,6 +137,7 @@ class AddGoalFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
+                    updateGoalName(state.goalName)
                     updateDeadline(state.deadlineText)
                     updateCategory(state)
                     updateSubGoals(state.subGoals)
@@ -189,6 +189,9 @@ class AddGoalFragment : Fragment() {
         }
 
         val categoryTitle = state.selectedCategoryTitle
+            ?: state.selectedCategory?.let { category ->
+                options.firstOrNull { it.goalCategory == category }?.title
+            }
         if (categoryTitle != null) {
             text = getString(R.string.category_value, categoryTitle)
             setTextColor(Color.WHITE)
@@ -198,6 +201,12 @@ class AddGoalFragment : Fragment() {
         }
     }
 
+    private fun updateGoalName(goalName: String) = with(binding.etGoalName) {
+        if (text?.toString() != goalName) {
+            setText(goalName)
+            setSelection(goalName.length)
+        }
+    }
 
     private fun updateSubGoals(subGoals: List<SubGoalItemUi>) = with(binding) {
         subGoalAdapter.submitList(subGoals)
