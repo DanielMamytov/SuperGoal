@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="12dp"
-    android:background="@drawable/bg_input_goal_for_item"
+    android:background="#00FFFFFF"
     android:gravity="center_vertical"
     android:orientation="horizontal"
     android:paddingStart="16dp"
@@ -11,34 +11,26 @@
     android:paddingEnd="12dp"
     android:paddingBottom="12dp">
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/cbSubGoal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/selector_check_square"
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:layout_marginEnd="12dp" />
 
-    <TextView
-        android:id="@+id/tvSubGoalTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_regular"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
+        <CheckBox
+            android:id="@+id/task_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/custom_checkbox"
+            android:buttonTint="@android:color/transparent"
+            android:padding="4dp" />
 
-    <ImageButton
-        android:id="@+id/btnDeleteSubGoal"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:background="@drawable/bg_badge"
-        android:contentDescription="@string/delete_subgoal_content_description"
-        android:padding="8dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/recycle_ic"
-        android:tint="@android:color/white" />
+        <TextView
+            android:id="@+id/task_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="10dp"
+            android:layout_marginStart="10dp"
+            android:text="Drink 2 liters of water"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" /> <!-- Customize text style and color -->
+
 
 </LinearLayout>

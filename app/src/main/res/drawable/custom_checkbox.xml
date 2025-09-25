@@ -1,0 +1,7 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When the checkbox is checked -->
+    <item android:drawable="@drawable/checkbox_checked" android:state_checked="true" />
+
+    <!-- When the checkbox is unchecked -->
+    <item android:drawable="@drawable/checkbox_unchecked" />
+</selector>
