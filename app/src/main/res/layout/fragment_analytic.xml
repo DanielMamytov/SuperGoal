@@ -35,55 +35,75 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <FrameLayout
+        <LinearLayout
             android:id="@+id/overallContainer"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:foregroundGravity="center">
-
-            <be.buithg.supergoal.presentation.ui.custom.CircularGradientProgressView
-                android:id="@+id/cgOverallProgress"
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:layout_gravity="center"
-                android:padding="4dp"
-                app:cgp_gapAngle="10"
-                app:cgp_gradientEndColor="@color/analytics_progress_end"
-                app:cgp_gradientStartColor="@color/analytics_progress_start"
-                app:cgp_progress="0"
-                app:cgp_startAngle="270"
-                app:cgp_strokeWidth="16dp"
-                app:cgp_trackColor="#242631"
-                tools:progress="72" />
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/progressCenterContainer"
+                android:id="@+id/overallProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_overall_progress_track"
+                android:clipToPadding="false"
+                android:clipToOutline="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <FrameLayout
+                    android:id="@+id/overallProgressCompletedSegment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_overall_progress_completed"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:id="@+id/tvOverallPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        tools:text="72%" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/overallProgressRemainingSegment"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_overall_progress_remaining"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp">
+
+                    <TextView
+                        android:id="@+id/tvOverallRemainingPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        tools:text="28%" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvOverallSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvOverallPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_extra_bold"
-                    android:textColor="@android:color/white"
-                    android:textSize="36sp"
-                    tools:text="72%" />
-
-                <TextView
-                    android:id="@+id/tvOverallSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="@string/analytics_overall_progress_subtitle"
-                    android:textColor="#9E9EA6"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </FrameLayout>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/analytics_overall_progress_subtitle"
+                android:textColor="#9E9EA6"
+                android:textSize="14sp" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvOverallEmpty"
@@ -102,6 +122,7 @@
             android:id="@+id/tvCategoriesHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="28dp"
             android:fontFamily="@font/poppins_bold"
             android:text="@string/analytics_category_distribution_title"

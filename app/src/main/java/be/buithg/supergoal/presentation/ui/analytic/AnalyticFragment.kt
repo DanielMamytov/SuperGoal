@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -50,6 +52,7 @@ class AnalyticFragment : Fragment() {
         _binding = null
     }
 
+
     private fun collectUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -60,13 +63,16 @@ class AnalyticFragment : Fragment() {
 
     private fun renderState(state: AnalyticUiState) = with(binding) {
         overallContainer.isVisible = state.hasOverallProgress
-        cgOverallProgress.isVisible = state.hasOverallProgress
-        progressCenterContainer.isVisible = state.hasOverallProgress
         tvOverallEmpty.isVisible = !state.hasOverallProgress
 
         if (state.hasOverallProgress) {
-            cgOverallProgress.progress = state.overallProgress
-            tvOverallPercent.text = getString(R.string.analytics_percent_value, state.overallProgress)
+            val completedPercent = state.overallProgress.coerceIn(0, 100)
+            val remainingPercent = (100 - completedPercent).coerceAtLeast(0)
+
+            updateOverallBar(completedPercent, remainingPercent)
+            tvOverallPercent.text = getString(R.string.analytics_percent_value, completedPercent)
+            tvOverallRemainingPercent.text = getString(R.string.analytics_percent_value, remainingPercent)
+
         }
 
         val hasCategoryData = state.hasCategoryShares
@@ -88,6 +94,40 @@ class AnalyticFragment : Fragment() {
             pieChartView.setData(emptyList())
             legendContainer.removeAllViews()
         }
+    }
+    private fun FragmentAnalyticBinding.updateOverallBar(
+        completedPercent: Int,
+        remainingPercent: Int,
+    ) {
+        val hasCompleted = completedPercent > 0
+        val hasRemaining = remainingPercent > 0
+
+        overallProgressCompletedSegment.isVisible = hasCompleted
+        overallProgressRemainingSegment.isVisible = hasRemaining
+
+        tvOverallPercent.isVisible = hasCompleted
+        tvOverallRemainingPercent.isVisible = hasRemaining
+
+        overallProgressCompletedSegment.updateLayoutParams<LinearLayout.LayoutParams> {
+            weight = if (hasCompleted) completedPercent.toFloat() else 0f
+        }
+        overallProgressRemainingSegment.updateLayoutParams<LinearLayout.LayoutParams> {
+            weight = if (hasRemaining) remainingPercent.toFloat() else 0f
+        }
+
+        val completedBackground = if (hasRemaining) {
+            R.drawable.bg_overall_progress_completed
+        } else {
+            R.drawable.bg_overall_progress_completed_full
+        }
+        val remainingBackground = if (hasCompleted) {
+            R.drawable.bg_overall_progress_remaining
+        } else {
+            R.drawable.bg_overall_progress_remaining_full
+        }
+
+        overallProgressCompletedSegment.setBackgroundResource(completedBackground)
+        overallProgressRemainingSegment.setBackgroundResource(remainingBackground)
     }
 
     private fun renderLegend(state: AnalyticUiState) {
