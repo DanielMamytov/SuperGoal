@@ -1,11 +1,13 @@
 package be.buithg.supergoal.presentation.ui.analytic
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,6 +17,7 @@ import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.FragmentAnalyticBinding
 import be.buithg.supergoal.databinding.ItemCategoryProgressBinding
 import be.buithg.supergoal.domain.model.GoalCategory
+
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -93,6 +96,7 @@ class AnalyticFragment : Fragment() {
             itemBinding.progressBar.setIndicatorColor(color)
             itemBinding.progressBar.setProgressCompat(percentValue, false)
             binding.categoryContainer.addView(itemBinding.root)
+
         }
     }
 

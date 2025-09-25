@@ -9,4 +9,5 @@
         <attr name="cgp_gradientEndColor" format="color"/>
     </declare-styleable>
 
+
 </resources>
