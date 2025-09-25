@@ -9,8 +9,5 @@
         <attr name="cgp_gradientEndColor" format="color"/>
     </declare-styleable>
 
-    <declare-styleable name="AnalyticsPieChartView">
-        <attr name="apc_strokeWidth" format="dimension"/>
-        <attr name="apc_gapAngle" format="float"/>
-    </declare-styleable>
+
 </resources>
