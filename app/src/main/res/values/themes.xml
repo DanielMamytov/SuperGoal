@@ -38,18 +38,6 @@
         <item name="cornerSize">50%</item>
 
     </style>
-    <resources>
-        <declare-styleable name="CircularGradientProgressView">
-            <attr name="cgp_progress" format="integer"/>            <!-- 0..100 -->
-            <attr name="cgp_trackColor" format="color"/>
-            <attr name="cgp_strokeWidth" format="dimension"/>
-            <attr name="cgp_startAngle" format="float"/>            <!-- где будет начало (по часам), 0 = правый край -->
-            <attr name="cgp_gapAngle" format="float"/>              <!-- разрыв трека в градусах -->
-            <attr name="cgp_gradientStartColor" format="color"/>
-            <attr name="cgp_gradientEndColor" format="color"/>
-        </declare-styleable>
-    </resources>
-
 
 
 

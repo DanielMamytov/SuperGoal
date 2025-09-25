@@ -13,7 +13,6 @@
         android:paddingTop="20dp"
         android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/tvMyGoals"
         android:layout_width="match_parent"
@@ -21,7 +20,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/poppins_extra_bold"
-        android:text="MY GOALS"
+        android:text="Goal Details"
+        android:textAllCaps="true"
         android:textColor="@android:color/white"
         android:textSize="40sp" />
 
