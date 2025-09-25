@@ -89,15 +89,55 @@
         android:id="@+id/tvDeadline"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:elevation="1dp"
         android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
         android:textColor="#8FFFFFFF"
         android:textSize="14sp"
-        android:elevation="1dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivCover"
         app:layout_constraintTop_toBottomOf="@+id/pbProgress"
         tools:text="Nov 30, 2024" />
+
+    <LinearLayout
+        android:id="@+id/ifCompleted"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivCover"
+        app:layout_constraintTop_toBottomOf="@+id/pbProgress">
+
+        <TextView
+            android:id="@+id/tvTextCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:textColor="#F23230"
+            android:layout_marginEnd="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="Completed" />
+
+        <TextView
+            android:id="@+id/tvDeadline2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:textColor="#8FFFFFFF"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCover"
+            app:layout_constraintTop_toBottomOf="@+id/pbProgress"
+            tools:text="Nov 30, 2024" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
