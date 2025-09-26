@@ -115,47 +115,56 @@
             android:textSize="18sp" />
 
 
-
-        <TextView
+        <LinearLayout
             android:id="@+id/tvCategoriesEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="@string/analytics_empty_state"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"
-            tools:visibility="gone" />
+            android:background="@drawable/bg_input_goal"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="30dp"
+            tools:visibility="gone">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="@string/analytics_empty_state"
+                android:textColor="#87FFFFFF"
+                android:textSize="16sp" />
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/categoryContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="12dp"
-            android:layout_marginHorizontal="20dp">
+            android:orientation="vertical">
 
             <!-- Category 1 -->
             <include
-                layout="@layout/item_category_progress"
-                android:id="@+id/itemFitness"/>
+                android:id="@+id/itemFitness"
+                layout="@layout/item_category_progress" />
 
             <!-- Category 2 -->
             <include
-                layout="@layout/item_category_progress"
-                android:id="@+id/itemTeam"/>
+                android:id="@+id/itemTeam"
+                layout="@layout/item_category_progress" />
 
             <!-- Category 3 -->
             <include
-                layout="@layout/item_category_progress"
-                android:id="@+id/itemIndividual"/>
+                android:id="@+id/itemIndividual"
+                layout="@layout/item_category_progress" />
 
             <!-- Category 4 -->
             <include
-                layout="@layout/item_category_progress"
-                android:id="@+id/itemOther"/>
+                android:id="@+id/itemOther"
+                layout="@layout/item_category_progress" />
 
         </LinearLayout>
     </LinearLayout>
