@@ -220,14 +220,17 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/etSubGoalInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="15dp"
-                    android:drawableEnd="@drawable/ic_delete"
-                    android:hint="Enter subgoal"
                     android:layout_marginBottom="20dp"
                     android:background="@android:color/transparent"
+                    android:hint="@string/add_subgoal_hint"
+                    android:imeOptions="actionDone"
+                    android:inputType="textCapSentences"
+                    android:textColor="#E8ECEF"
                     android:textColorHint="#87FFFFFF" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -259,26 +262,30 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/tvSubGoalWarning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="50dp"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingBottom="10dp"
-                android:text="Add a subgoal to save the goal"
+                android:text="@string/toast_add_subgoal_first"
                 android:textColor="#F23230"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tvFieldsWarning"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="50dp"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingBottom="10dp"
-                android:text="Fill all fields to save the goal"
+                android:text="@string/toast_fill_all_fields"
                 android:textColor="#F23230"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 

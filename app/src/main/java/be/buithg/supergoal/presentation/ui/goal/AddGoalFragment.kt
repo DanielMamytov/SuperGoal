@@ -7,14 +7,10 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.animation.doOnEnd
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
@@ -32,6 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.util.Calendar
 import kotlinx.coroutines.launch
 import androidx.activity.result.contract.ActivityResultContracts
+import android.view.inputmethod.EditorInfo
 
 @AndroidEntryPoint
 class AddGoalFragment : Fragment() {
@@ -46,6 +43,9 @@ class AddGoalFragment : Fragment() {
 
     private var categoryExpanded = false
     private var displayedImageUri: String? = null
+
+    private var shouldShowSubGoalWarning = false
+    private var shouldShowFieldsWarning = false
 
     private val hintTextColor: Int by lazy { Color.parseColor("#87FFFFFF") }
 
@@ -129,7 +129,15 @@ class AddGoalFragment : Fragment() {
         }
         etCalendar.setOnClickListener { showDatePicker() }
         btnAddPhoto.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*")) }
-        buttonSubGoal.setOnClickListener { showAddSubGoalDialog() }
+        buttonSubGoal.setOnClickListener { handleAddSubGoalInput() }
+        etSubGoalInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                handleAddSubGoalInput()
+                true
+            } else {
+                false
+            }
+        }
         buttonSaveGoal.setOnClickListener { viewModel.onSaveGoal() }
     }
 
@@ -142,6 +150,7 @@ class AddGoalFragment : Fragment() {
                     updateCategory(state)
                     updateSubGoals(state.subGoals)
                     updateImage(state.imageUri)
+                    updateWarnings(state)
                 }
             }
         }
@@ -154,6 +163,16 @@ class AddGoalFragment : Fragment() {
                     when (event) {
                         is AddGoalEvent.ShowMessage -> {
                             Toast.makeText(requireContext(), getString(event.messageRes), Toast.LENGTH_SHORT).show()
+                            when (event.messageRes) {
+                                R.string.toast_add_subgoal_first -> {
+                                    shouldShowSubGoalWarning = true
+                                }
+
+                                R.string.toast_fill_all_fields -> {
+                                    shouldShowFieldsWarning = true
+                                }
+                            }
+                            updateWarnings(viewModel.uiState.value)
                         }
 
                         AddGoalEvent.GoalSaved -> {
@@ -258,44 +277,29 @@ class AddGoalFragment : Fragment() {
         dialog.show()
     }
 
-    private fun showAddSubGoalDialog() {
-        val input = AppCompatEditText(requireContext()).apply {
-            hint = getString(R.string.add_subgoal_hint)
-            inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+    private fun handleAddSubGoalInput() {
+        val text = binding.etSubGoalInput.text?.toString().orEmpty().trim()
+        if (text.isEmpty()) {
+            Toast.makeText(requireContext(), R.string.error_empty_subgoal, Toast.LENGTH_SHORT).show()
+            return
         }
-        val container = FrameLayout(requireContext()).apply {
-            val params = FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-            )
-            val margin = resources.getDimensionPixelSize(R.dimen.dialog_padding)
-            params.leftMargin = margin
-            params.rightMargin = margin
-            addView(input, params)
-        }
-
-        val dialog = AlertDialog.Builder(requireContext())
-            .setTitle(R.string.add_subgoal_title)
-            .setView(container)
-            .setPositiveButton(R.string.action_add, null)
-            .setNegativeButton(R.string.action_cancel, null)
-            .create()
-
-        dialog.setOnShowListener {
-            val addButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            addButton.setOnClickListener {
-                val text = input.text?.toString().orEmpty().trim()
-                if (text.isEmpty()) {
-                    Toast.makeText(requireContext(), R.string.error_empty_subgoal, Toast.LENGTH_SHORT).show()
-                } else {
-                    viewModel.onAddSubGoal(text)
-                    dialog.dismiss()
-                }
-            }
-        }
-
-        dialog.show()
+        viewModel.onAddSubGoal(text)
+        binding.etSubGoalInput.text?.clear()
     }
+
+    private fun updateWarnings(state: AddGoalUiState) = with(binding) {
+        if (state.subGoals.isNotEmpty()) {
+            shouldShowSubGoalWarning = false
+        }
+        if (state.hasAllRequiredFields()) {
+            shouldShowFieldsWarning = false
+        }
+        tvSubGoalWarning.isVisible = shouldShowSubGoalWarning && state.subGoals.isEmpty()
+        tvFieldsWarning.isVisible = shouldShowFieldsWarning && !state.hasAllRequiredFields()
+    }
+
+    private fun AddGoalUiState.hasAllRequiredFields(): Boolean =
+        goalName.isNotBlank() && deadlineMillis != null && selectedCategory != null
 
     private fun togglePanel(panel: View, expand: Boolean) {
         if (expand) {
