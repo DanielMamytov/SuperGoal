@@ -1,5 +1,6 @@
 package be.buithg.supergoal.presentation.ui.goal
 
+import android.content.ContentResolver
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -37,11 +38,15 @@ class GoalAdapter(
 
             if (!item.imageUri.isNullOrBlank()) {
                 val uri = runCatching { Uri.parse(item.imageUri) }.getOrNull()
-                if (uri != null) {
-                    ivCover.setImageURI(null)
-                    ivCover.setImageURI(uri)
-                } else {
-                    ivCover.setImageResource(R.drawable.ic_launcher_background)
+                val isResourceUri = uri?.scheme == ContentResolver.SCHEME_ANDROID_RESOURCE
+                val resourceId = if (isResourceUri) uri?.lastPathSegment?.toIntOrNull() else null
+                when {
+                    resourceId != null -> ivCover.setImageResource(resourceId)
+                    uri != null -> {
+                        ivCover.setImageURI(null)
+                        ivCover.setImageURI(uri)
+                    }
+                    else -> ivCover.setImageResource(R.drawable.ic_launcher_background)
                 }
             } else {
                 ivCover.setImageResource(R.drawable.ic_launcher_background)
