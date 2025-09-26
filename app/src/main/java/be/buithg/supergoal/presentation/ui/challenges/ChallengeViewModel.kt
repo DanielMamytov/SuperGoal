@@ -2,7 +2,6 @@ package be.buithg.supergoal.presentation.ui.challenges
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import be.buithg.supergoal.domain.model.Goal
 import be.buithg.supergoal.domain.usecase.GoalUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -21,7 +20,7 @@ class ChallengeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(
         ChallengeListUiState(
             challenges = allChallenges.map { challenge ->
-                ChallengeListItem(challenge = challenge, isCompleted = false)
+                ChallengeListItem(challenge = challenge, status = ChallengeStatus.NotStarted)
             },
         ),
     )
@@ -34,15 +33,17 @@ class ChallengeViewModel @Inject constructor(
     private fun observeGoals() {
         viewModelScope.launch {
             goalUseCases.observeGoals().collect { goals ->
-                val completedTitles = goals
-                    .filter { it.archivedAtMillis != null }
-                    .map(Goal::title)
-                    .toSet()
                 _uiState.value = ChallengeListUiState(
                     challenges = allChallenges.map { challenge ->
+                        val matchingGoal = goals.firstOrNull { it.title == challenge.title }
+                        val status = when {
+                            matchingGoal == null -> ChallengeStatus.NotStarted
+                            matchingGoal.archivedAtMillis != null -> ChallengeStatus.Completed
+                            else -> ChallengeStatus.Active
+                        }
                         ChallengeListItem(
                             challenge = challenge,
-                            isCompleted = completedTitles.contains(challenge.title),
+                            status = status,
                         )
                     },
                 )
@@ -57,5 +58,5 @@ data class ChallengeListUiState(
 
 data class ChallengeListItem(
     val challenge: Challenge,
-    val isCompleted: Boolean,
+    val status: ChallengeStatus,
 )

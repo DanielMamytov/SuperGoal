@@ -130,7 +130,7 @@ class ChallengeDetailFragment : Fragment() {
         buttonStartChallenge.isEnabled = state.hasContent && !isChallengeStarted
         buttonStartChallenge.alpha = if (state.hasContent && !isChallengeStarted) 1f else 0.5f
 
-        buttonActiv.isVisible = isChallengeStarted
+        buttonActiv.isVisible = isChallengeStarted && !isChallengeCompleted
 
         val showCompleteButton = state.challengeStatus == ChallengeStatus.Active
         buttonCompleteChallenge.isVisible = showCompleteButton
