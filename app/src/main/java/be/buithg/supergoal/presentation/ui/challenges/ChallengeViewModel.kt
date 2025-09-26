@@ -34,7 +34,10 @@ class ChallengeViewModel @Inject constructor(
     private fun observeGoals() {
         viewModelScope.launch {
             goalUseCases.observeGoals().collect { goals ->
-                val completedTitles = goals.filter(Goal::isCompleted).map(Goal::title).toSet()
+                val completedTitles = goals
+                    .filter { it.archivedAtMillis != null }
+                    .map(Goal::title)
+                    .toSet()
                 _uiState.value = ChallengeListUiState(
                     challenges = allChallenges.map { challenge ->
                         ChallengeListItem(

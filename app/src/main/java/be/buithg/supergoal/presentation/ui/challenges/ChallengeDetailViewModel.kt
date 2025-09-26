@@ -39,6 +39,7 @@ class ChallengeDetailViewModel @Inject constructor(
     val events = eventsChannel.receiveAsFlow()
 
     private var selectedChallenge: Challenge? = null
+    private var activeGoal: Goal? = null
     private var computedDeadlineMillis: Long? = null
     private var observeGoalsJob: Job? = null
 
@@ -57,6 +58,7 @@ class ChallengeDetailViewModel @Inject constructor(
         val updatedSubGoals = previousState.subGoals.map { subGoal ->
             if (subGoal.id == id) subGoal.copy(isChecked = isChecked) else subGoal
         }
+        val syncedGoal = syncActiveGoal(updatedSubGoals)
         val updatedStatus = if (
             previousState.challengeStatus == ChallengeStatus.Completed &&
             updatedSubGoals.any { !it.isChecked }
@@ -76,6 +78,21 @@ class ChallengeDetailViewModel @Inject constructor(
         if (previousState.goalId != null) {
             viewModelScope.launch {
                 goalUseCases.updateSubGoalStatus(id, isChecked)
+            }
+        }
+
+        if (
+            previousState.goalId != null &&
+            previousState.challengeStatus == ChallengeStatus.Completed &&
+            updatedSubGoals.any { !it.isChecked }
+        ) {
+            val goal = syncedGoal
+            if (goal != null && goal.archivedAtMillis != null) {
+                val reactivatedGoal = goal.copy(archivedAtMillis = null)
+                activeGoal = reactivatedGoal
+                viewModelScope.launch {
+                    goalUseCases.upsertGoal(reactivatedGoal)
+                }
             }
         }
     }
@@ -122,10 +139,26 @@ class ChallengeDetailViewModel @Inject constructor(
             return
         }
 
+        val goal = activeGoal
+        if (goal == null) {
+            sendMessage(R.string.challenge_detail_goal_missing)
+            return
+        }
+
+        val updatedSubGoals = mapUiSubGoalsToDomain(state.subGoals, goal)
+        val completedGoal = goal.copy(
+            archivedAtMillis = System.currentTimeMillis(),
+            subGoals = updatedSubGoals,
+        )
+        activeGoal = completedGoal
+
         _uiState.update { current ->
             current.copy(challengeStatus = ChallengeStatus.Completed)
         }
-        sendMessage(R.string.challenge_detail_complete_success)
+        viewModelScope.launch {
+            goalUseCases.upsertGoal(completedGoal)
+            sendMessage(R.string.challenge_detail_complete_success)
+        }
     }
 
     fun onPerformAgain() {
@@ -139,6 +172,18 @@ class ChallengeDetailViewModel @Inject constructor(
             return
         }
 
+        val goal = activeGoal
+        if (goal == null) {
+            sendMessage(R.string.challenge_detail_goal_missing)
+            return
+        }
+
+        val resetGoal = goal.copy(
+            archivedAtMillis = null,
+            subGoals = goal.subGoals.map { it.copy(isCompleted = false) },
+        )
+        activeGoal = resetGoal
+
         _uiState.update { current ->
             current.copy(
                 challengeStatus = ChallengeStatus.Active,
@@ -147,9 +192,8 @@ class ChallengeDetailViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
-            state.subGoals.forEach { subGoal ->
-                goalUseCases.updateSubGoalStatus(subGoal.id, false)
-            }
+            goalUseCases.upsertGoal(resetGoal)
+
             sendMessage(R.string.challenge_detail_reset_message)
         }
     }
@@ -201,18 +245,20 @@ class ChallengeDetailViewModel @Inject constructor(
 
                 _uiState.update { state ->
                     if (matchingGoal == null) {
+                        activeGoal = null
                         state.copy(
                             goalId = null,
                             challengeStatus = ChallengeStatus.NotStarted,
                         )
                     } else {
+                        activeGoal = matchingGoal
                         val (deadlineText, durationDays) = formatDeadline(
                             matchingGoal.deadlineMillis,
                             state.durationDays.takeIf { it > 0 } ?: challenge.durationDays,
                         )
                         state.copy(
                             goalId = matchingGoal.id,
-                            challengeStatus = if (matchingGoal.isCompleted) {
+                            challengeStatus = if (matchingGoal.archivedAtMillis != null) {
                                 ChallengeStatus.Completed
                             } else {
                                 ChallengeStatus.Active
@@ -264,6 +310,33 @@ class ChallengeDetailViewModel @Inject constructor(
 
     private fun sendEvent(event: ChallengeDetailEvent) {
         eventsChannel.trySend(event)
+    }
+
+    private fun syncActiveGoal(subGoals: List<ChallengeSubGoalUi>): Goal? {
+        val goal = activeGoal ?: return null
+        val updatedGoal = goal.copy(subGoals = mapUiSubGoalsToDomain(subGoals, goal))
+        activeGoal = updatedGoal
+        return updatedGoal
+    }
+
+    private fun mapUiSubGoalsToDomain(
+        uiSubGoals: List<ChallengeSubGoalUi>,
+        goal: Goal,
+    ): List<SubGoal> {
+        val existing = goal.subGoals.associateBy(SubGoal::id)
+        return uiSubGoals.map { subGoalUi ->
+            val domain = existing[subGoalUi.id]
+            if (domain != null) {
+                domain.copy(isCompleted = subGoalUi.isChecked)
+            } else {
+                SubGoal(
+                    id = subGoalUi.id,
+                    goalId = goal.id,
+                    title = subGoalUi.title,
+                    isCompleted = subGoalUi.isChecked,
+                )
+            }
+        }
     }
 }
 
