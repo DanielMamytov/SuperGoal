@@ -6,6 +6,7 @@ import be.buithg.supergoal.domain.usecase.ObserveActiveGoalsUseCase
 import be.buithg.supergoal.domain.usecase.ObserveCompletedGoalsUseCase
 import be.buithg.supergoal.domain.usecase.ObserveGoalByIdUseCase
 import be.buithg.supergoal.domain.usecase.ObserveGoalsUseCase
+import be.buithg.supergoal.domain.usecase.ReactivateGoalUseCase
 import be.buithg.supergoal.domain.usecase.UpdateSubGoalStatusUseCase
 import be.buithg.supergoal.domain.usecase.UpsertGoalUseCase
 import dagger.Module
@@ -27,7 +28,8 @@ object UseCaseModule {
         observeGoalById: ObserveGoalByIdUseCase,
         upsertGoal: UpsertGoalUseCase,
         deleteGoal: DeleteGoalUseCase,
-        updateSubGoalStatus: UpdateSubGoalStatusUseCase
+        updateSubGoalStatus: UpdateSubGoalStatusUseCase,
+        reactivateGoal: ReactivateGoalUseCase,
     ): GoalUseCases = GoalUseCases(
         observeGoals = observeGoals,
         observeActiveGoals = observeActiveGoals,
@@ -35,6 +37,7 @@ object UseCaseModule {
         observeGoalById = observeGoalById,
         upsertGoal = upsertGoal,
         deleteGoal = deleteGoal,
-        updateSubGoalStatus = updateSubGoalStatus
+        updateSubGoalStatus = updateSubGoalStatus,
+        reactivateGoal = reactivateGoal,
     )
 }

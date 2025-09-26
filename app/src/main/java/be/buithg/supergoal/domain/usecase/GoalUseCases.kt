@@ -9,5 +9,6 @@ data class GoalUseCases @Inject constructor(
     val observeGoalById: ObserveGoalByIdUseCase,
     val upsertGoal: UpsertGoalUseCase,
     val deleteGoal: DeleteGoalUseCase,
-    val updateSubGoalStatus: UpdateSubGoalStatusUseCase
+    val updateSubGoalStatus: UpdateSubGoalStatusUseCase,
+    val reactivateGoal: ReactivateGoalUseCase,
 )
