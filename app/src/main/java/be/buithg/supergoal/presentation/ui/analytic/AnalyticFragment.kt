@@ -58,7 +58,7 @@ class AnalyticFragment : Fragment() {
 
     private fun renderState(state: AnalyticUiState) = with(binding) {
         overallContainer.isVisible = state.hasOverallProgress
-        tvOverallEmpty.isVisible = !state.hasOverallProgress
+//        tvOverallEmpty.isVisible = !state.hasOverallProgress
 
         if (state.hasOverallProgress) {
             val completedPercent = state.overallProgress.coerceIn(0, 100)

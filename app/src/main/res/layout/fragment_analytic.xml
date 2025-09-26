@@ -91,18 +91,18 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvOverallEmpty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:text="@string/analytics_empty_state"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"
-            tools:visibility="gone" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvOverallEmpty"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:fontFamily="@font/poppins_regular"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/analytics_empty_state"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="16sp"-->
+<!--            android:visibility="gone"-->
+<!--            tools:visibility="gone" />-->
 
         <TextView
             android:id="@+id/tvCategoriesHeader"
