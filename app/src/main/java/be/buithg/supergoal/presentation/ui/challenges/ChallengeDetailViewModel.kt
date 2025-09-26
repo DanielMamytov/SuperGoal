@@ -6,7 +6,6 @@ import androidx.annotation.StringRes
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import be.buithg.supergoal.BuildConfig
 import be.buithg.supergoal.R
 import be.buithg.supergoal.domain.model.Goal
 import be.buithg.supergoal.domain.model.GoalCategory
@@ -317,7 +316,8 @@ class ChallengeDetailViewModel @Inject constructor(
 
     private fun toResourceUri(@DrawableRes imageRes: Int): String? {
         if (imageRes == 0) return null
-        return "${ContentResolver.SCHEME_ANDROID_RESOURCE}://${BuildConfig.APPLICATION_ID}/$imageRes"
+        val packageName = R::class.java.`package`?.name ?: return null
+        return "${ContentResolver.SCHEME_ANDROID_RESOURCE}://$packageName/$imageRes"
     }
 
     private fun syncActiveGoal(subGoals: List<ChallengeSubGoalUi>): Goal? {
