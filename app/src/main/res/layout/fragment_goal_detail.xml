@@ -47,7 +47,7 @@
                     app:strokeColor="#F23230"
                     app:strokeWidth="1dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_launcher_background"
+                    android:src="@drawable/place_holder_prime"
                     app:shapeAppearanceOverlay="@style/CircleImageView" />
 
 

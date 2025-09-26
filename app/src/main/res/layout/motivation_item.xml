@@ -17,7 +17,7 @@
         android:paddingVertical="10dp"
         android:scaleType="centerCrop"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/place_holder_prime"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

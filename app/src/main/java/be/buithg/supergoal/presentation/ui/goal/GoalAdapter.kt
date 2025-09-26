@@ -67,10 +67,10 @@ class GoalAdapter(
                         ivCover.setImageURI(null)
                         ivCover.setImageURI(uri)
                     }
-                    else -> ivCover.setImageResource(R.drawable.ic_launcher_background)
+                    else -> ivCover.setImageResource(R.drawable.place_holder_prime)
                 }
             } else {
-                ivCover.setImageResource(R.drawable.ic_launcher_background)
+                ivCover.setImageResource(R.drawable.place_holder_prime)
             }
 
             root.setOnClickListener { onGoalClick(item) }
@@ -94,10 +94,10 @@ class GoalAdapter(
                     ivCover.setImageURI(null)
                     ivCover.setImageURI(uri)
                 } else {
-                    ivCover.setImageResource(R.drawable.ic_launcher_background)
+                    ivCover.setImageResource(R.drawable.place_holder_prime)
                 }
             } else {
-                ivCover.setImageResource(R.drawable.ic_launcher_background)
+                ivCover.setImageResource(R.drawable.place_holder_prime)
             }
 
             root.setOnClickListener { onGoalClick(item) }
