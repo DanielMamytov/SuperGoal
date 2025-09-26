@@ -2,9 +2,11 @@ package be.buithg.supergoal.presentation.ui.challenges
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import be.buithg.supergoal.R
 import be.buithg.supergoal.databinding.ItemChallengeSubgoalBinding
 
 class ChallengeSubGoalAdapter(
@@ -30,6 +32,10 @@ class ChallengeSubGoalAdapter(
             checkSubGoal.setOnCheckedChangeListener(null)
             checkSubGoal.text = item.title
             checkSubGoal.isChecked = item.isChecked
+            checkSubGoal.buttonTintList = AppCompatResources.getColorStateList(
+                root.context,
+                R.color.selector_checkbox_tint,
+            )
             checkSubGoal.setOnCheckedChangeListener { _, isChecked ->
                 onCheckedChange(item.id, isChecked)
             }
