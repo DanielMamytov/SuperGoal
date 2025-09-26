@@ -1,5 +1,6 @@
 package be.buithg.supergoal.presentation.ui.goal
 
+import android.content.ContentResolver
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -142,15 +143,26 @@ class GoalDetailFragment : Fragment() {
             photoPreview.isVisible = true
         } else if (displayedImageUri != state.imageUri) {
             val uri = runCatching { Uri.parse(state.imageUri) }.getOrNull()
-            if (uri != null) {
-                displayedImageUri = state.imageUri
-                photoPreview.setImageURI(null)
-                photoPreview.setImageURI(uri)
-                photoPreview.isVisible = false
-            } else {
-                displayedImageUri = null
-                photoPreview.setImageDrawable(null)
-                photoPreview.isVisible = true
+            val isResourceUri = uri?.scheme == ContentResolver.SCHEME_ANDROID_RESOURCE
+            val resourceId = if (isResourceUri) uri?.lastPathSegment?.toIntOrNull() else null
+            when {
+                resourceId != null -> {
+                    displayedImageUri = state.imageUri
+                    photoPreview.setImageDrawable(null)
+                    photoPreview.setImageResource(resourceId)
+                    photoPreview.isVisible = false
+                }
+                uri != null -> {
+                    displayedImageUri = state.imageUri
+                    photoPreview.setImageURI(null)
+                    photoPreview.setImageURI(uri)
+                    photoPreview.isVisible = false
+                }
+                else -> {
+                    displayedImageUri = null
+                    photoPreview.setImageDrawable(null)
+                    photoPreview.isVisible = true
+                }
             }
         }
     }

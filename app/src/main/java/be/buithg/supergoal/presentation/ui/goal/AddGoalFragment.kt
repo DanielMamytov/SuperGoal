@@ -3,6 +3,7 @@ package be.buithg.supergoal.presentation.ui.goal
 import CategoryAdapter
 import android.animation.ValueAnimator
 import android.app.DatePickerDialog
+import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -242,15 +243,26 @@ class AddGoalFragment : Fragment() {
             photoPlaceholder.isVisible = true
         } else if (displayedImageUri != imageUri) {
             val parsedUri = runCatching { Uri.parse(imageUri) }.getOrNull()
-            if (parsedUri != null) {
-                displayedImageUri = imageUri
-                photoPreview.setImageURI(null)
-                photoPreview.setImageURI(parsedUri)
-                photoPlaceholder.isVisible = false
-            } else {
-                displayedImageUri = null
-                photoPreview.setImageDrawable(null)
-                photoPlaceholder.isVisible = true
+            val isResourceUri = parsedUri?.scheme == ContentResolver.SCHEME_ANDROID_RESOURCE
+            val resourceId = if (isResourceUri) parsedUri?.lastPathSegment?.toIntOrNull() else null
+            when {
+                resourceId != null -> {
+                    displayedImageUri = imageUri
+                    photoPreview.setImageDrawable(null)
+                    photoPreview.setImageResource(resourceId)
+                    photoPlaceholder.isVisible = false
+                }
+                parsedUri != null -> {
+                    displayedImageUri = imageUri
+                    photoPreview.setImageURI(null)
+                    photoPreview.setImageURI(parsedUri)
+                    photoPlaceholder.isVisible = false
+                }
+                else -> {
+                    displayedImageUri = null
+                    photoPreview.setImageDrawable(null)
+                    photoPlaceholder.isVisible = true
+                }
             }
         }
     }

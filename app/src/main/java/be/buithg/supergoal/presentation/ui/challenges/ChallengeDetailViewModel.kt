@@ -1,9 +1,12 @@
 package be.buithg.supergoal.presentation.ui.challenges
 
+import android.content.ContentResolver
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import be.buithg.supergoal.BuildConfig
 import be.buithg.supergoal.R
 import be.buithg.supergoal.domain.model.Goal
 import be.buithg.supergoal.domain.model.GoalCategory
@@ -115,7 +118,7 @@ class ChallengeDetailViewModel @Inject constructor(
             title = challenge.title,
             category = GoalCategory.fromRaw(challenge.category),
             deadlineMillis = deadlineMillis,
-            imageUri = null,
+            imageUri = toResourceUri(challenge.imageRes),
             createdAtMillis = System.currentTimeMillis(),
             subGoals = challenge.subgoals.map { title -> SubGoal(title = title) },
         )
@@ -310,6 +313,11 @@ class ChallengeDetailViewModel @Inject constructor(
 
     private fun sendEvent(event: ChallengeDetailEvent) {
         eventsChannel.trySend(event)
+    }
+
+    private fun toResourceUri(@DrawableRes imageRes: Int): String? {
+        if (imageRes == 0) return null
+        return "${ContentResolver.SCHEME_ANDROID_RESOURCE}://${BuildConfig.APPLICATION_ID}/$imageRes"
     }
 
     private fun syncActiveGoal(subGoals: List<ChallengeSubGoalUi>): Goal? {
