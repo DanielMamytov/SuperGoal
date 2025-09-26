@@ -130,6 +130,7 @@ class AddGoalFragment : Fragment() {
         }
         etCalendar.setOnClickListener { showDatePicker() }
         btnAddPhoto.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*")) }
+        photoPreview.setOnClickListener { pickImageLauncher.launch(arrayOf("image/*"))}
         buttonSubGoal.setOnClickListener { handleAddSubGoalInput() }
         etSubGoalInput.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
