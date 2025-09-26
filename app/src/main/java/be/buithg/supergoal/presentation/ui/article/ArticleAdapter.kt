@@ -6,12 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import be.buithg.supergoal.databinding.ArticleItemBinding
+import be.buithg.supergoal.databinding.MotivationItemBinding
 
 class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(ArticleDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ArticleItemBinding.inflate(inflater, parent, false)
+        val binding = MotivationItemBinding.inflate(inflater, parent, false)
         return ArticleViewHolder(binding)
     }
 
@@ -19,12 +20,12 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(Ar
         holder.bind(getItem(position))
     }
 
-    class ArticleViewHolder(private val binding: ArticleItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ArticleViewHolder(private val binding: MotivationItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: Article) {
             binding.ivCover.setImageResource(article.coverResId)
             binding.tvTitle.text = article.title
-            binding.tvContent.text = article.content
+            binding.tvDeadline.text = article.content
         }
     }
 

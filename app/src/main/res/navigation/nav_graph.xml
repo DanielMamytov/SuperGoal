@@ -94,4 +94,9 @@
             app:argType="integer"
             android:defaultValue="-1" />
     </fragment>
+    <fragment
+        android:id="@+id/motivationFragment"
+        android:name="be.buithg.supergoal.presentation.ui.motivation.MotivationFragment"
+        android:label="fragment_motivation"
+        tools:layout="@layout/fragment_motivation" />
 </navigation>
