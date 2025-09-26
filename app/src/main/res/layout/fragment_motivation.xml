@@ -42,17 +42,18 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tvQuote"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:textColor="@color/white"
-                    android:textAllCaps="true"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="“Train for the ninety, prepare for the ninety-first.”"/>
-                
+
                 <TextView
+                    android:id="@+id/tvQuoteAuthor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="— Marco Vale, Striker"
@@ -63,11 +64,16 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/btnRefreshQuote"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="end|bottom"
-
-                android:src="@drawable/recycle_ic"/>
+                android:contentDescription="@string/motivation_refresh_content_description"
+                android:src="@drawable/recycle_ic"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
