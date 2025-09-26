@@ -15,32 +15,39 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tvBack"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_weight="700"
             android:drawableStart="@drawable/back_ic"
             android:drawablePadding="10dp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Back"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp"
+            android:text="@string/article_back"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/tvMyGoals"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_extra_bold"
-            android:text="Article"
+            android:text="@string/article_heading"
             android:textColor="@android:color/white"
             android:textSize="40sp" />
 
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivArticleCover"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/article_im"
+            android:contentDescription="@string/article_cover_content_description"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.Article"
             app:strokeColor="#F23230"
             app:strokeWidth="2dp" />
@@ -55,19 +62,24 @@
             android:padding="20dp">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvArticleTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_extra_bold"
-                android:text="Orion Varela: The Quiet Rise"
+                android:text="@string/article_heading"
                 android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:text="Orion Varela: The Quiet Rise" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvArticleContent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#D8FFFFFF"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular"
-                android:text="I grew up in a coastal town where the wind never rested. The ball skipped across concrete and sand, and every bounce tried to trick me. I used to believe talent was something you found, like a coin on the beach. It took me years to learn that talent is mostly repetition that refuses to be boring. On training days I arrived early and I left late. "/>
+                android:textColor="#D8FFFFFF"
+                android:textSize="16sp"
+                tools:text="I grew up in a coastal town where the wind never rested..." />
         </LinearLayout>
     </LinearLayout>
 

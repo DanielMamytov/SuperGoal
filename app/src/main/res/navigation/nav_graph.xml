@@ -44,7 +44,12 @@
         android:id="@+id/nav_article"
         android:name="be.buithg.supergoal.presentation.ui.article.ArticleFragment"
         android:label="fragment_article"
-        tools:layout="@layout/fragment_article" />
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="articleId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_analytics"
@@ -98,5 +103,9 @@
         android:id="@+id/motivationFragment"
         android:name="be.buithg.supergoal.presentation.ui.motivation.MotivationFragment"
         android:label="fragment_motivation"
-        tools:layout="@layout/fragment_motivation" />
+        tools:layout="@layout/fragment_motivation">
+        <action
+            android:id="@+id/action_motivationFragment_to_nav_article"
+            app:destination="@id/nav_article" />
+    </fragment>
 </navigation>
