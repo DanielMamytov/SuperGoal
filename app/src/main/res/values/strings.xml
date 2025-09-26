@@ -69,6 +69,16 @@
     <string name="challenge_detail_start">Start Challenge</string>
     <string name="challenge_detail_toast">Challenge goal is successfully added</string>
     <string name="challenge_detail_missing">Challenge not found</string>
+    <string name="challenge_detail_complete">Complete Challenge</string>
+    <string name="challenge_detail_perform_again">Perform Again</string>
+    <string name="challenge_detail_completed_status">Challenge completed</string>
+    <string name="challenge_detail_incomplete_subgoals">Please complete all sub-goals before finishing the challenge.</string>
+    <string name="challenge_detail_reset_message">Challenge has been reset.</string>
+    <string name="challenge_detail_complete_success">Great job! Challenge completed.</string>
+    <string name="challenge_detail_goal_missing">Unable to find challenge progress. Please try again.</string>
+    <string name="challenge_detail_goal_already_started">This challenge is already active.</string>
+    <string name="challenge_detail_active">Challenge Active</string>
+    <string name="challenge_completed_status">Completed</string>
 
     <!-- Articles -->
     <string name="article_heading">Motivation Stories</string>
