@@ -85,5 +85,5 @@
     <string name="article_cover_content_description">Article cover image</string>
     <string name="article_back">Back</string>
     <string name="article_not_found_title">Article not found</string>
-    <string name="article_not_found_message">We couldn&#39;t load this story. Please try again later.</string>
+    <string name="article_not_found_message">We couldn t load this story. Please try again later.</string>
 </resources>
