@@ -11,71 +11,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <TextView
-        android:id="@+id/tvMyGoals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_extra_bold"
-        android:text="Settings"
-        android:layout_marginBottom="30dp"
-        android:textAllCaps="true"
-        android:textColor="@android:color/white"
-        android:textSize="40sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginHorizontal="10dp"
-        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvMyGoals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:text="@string/settings_title"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="40sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:backgroundTint="#EE322E"
-        android:fontFamily="@font/poppins_bold"
-        android:paddingVertical="10dp"
-        android:text="Share the App"
-        android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#EE322E"
-        android:fontFamily="@font/poppins_bold"
-        android:paddingVertical="10dp"
-        android:text="Rate Us"
-        android:textSize="16sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShareApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:backgroundTint="#EE322E"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingVertical="10dp"
+                android:text="@string/settings_share_the_app"
+                android:textSize="16sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#EE322E"
-        android:fontFamily="@font/poppins_bold"
-        android:paddingVertical="10dp"
-        android:text="Privacy Policy"
-        android:textSize="16sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRateUs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#EE322E"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingVertical="10dp"
+                android:text="@string/settings_rate_us"
+                android:textSize="16sp" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="#EE322E"
-        android:fontFamily="@font/poppins_bold"
-        android:paddingVertical="10dp"
-        android:text="Terms and Conditions"
-        android:textSize="16sp" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPrivacyPolicy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#EE322E"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingVertical="10dp"
+                android:text="@string/settings_privacy_policy"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTermsAndConditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#EE322E"
+                android:fontFamily="@font/poppins_bold"
+                android:paddingVertical="10dp"
+                android:text="@string/settings_terms_and_conditions"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
