@@ -64,6 +64,8 @@ class ChallengeDetailFragment : Fragment() {
     private fun setupListeners() = with(binding) {
         buttonBack.setOnClickListener { popIfPossible() }
         buttonStartChallenge.setOnClickListener { viewModel.onStartChallenge() }
+        buttonCompleteChallenge.setOnClickListener { viewModel.onCompleteChallenge() }
+        buttonPerformAgain.setOnClickListener { viewModel.onPerformAgain() }
     }
 
     private fun collectState() {
@@ -121,8 +123,23 @@ class ChallengeDetailFragment : Fragment() {
         }
 
         cardContent.isVisible = state.hasContent
-        buttonStartChallenge.isEnabled = state.hasContent
-        buttonStartChallenge.alpha = if (state.hasContent) 1f else 0.5f
+        val isChallengeStarted = state.isChallengeStarted
+        val isChallengeCompleted = state.isChallengeCompleted
+
+        buttonStartChallenge.isVisible = state.hasContent && !isChallengeStarted
+        buttonStartChallenge.isEnabled = state.hasContent && !isChallengeStarted
+        buttonStartChallenge.alpha = if (state.hasContent && !isChallengeStarted) 1f else 0.5f
+
+        buttonActiv.isVisible = isChallengeStarted
+
+        val showCompleteButton = state.challengeStatus == ChallengeStatus.Active
+        buttonCompleteChallenge.isVisible = showCompleteButton
+        buttonCompleteChallenge.isEnabled = showCompleteButton
+        buttonCompleteChallenge.alpha = if (state.canCompleteChallenge) 1f else 0.7f
+
+        statusCompleted.isVisible = isChallengeCompleted
+        buttonPerformAgain.isVisible = isChallengeCompleted
+        buttonPerformAgain.isEnabled = isChallengeCompleted
     }
 
     private fun popIfPossible() {
