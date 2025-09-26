@@ -11,4 +11,5 @@ interface GoalRepository {
     suspend fun upsertGoal(goal: Goal)
     suspend fun deleteGoal(goalId: Long)
     suspend fun updateSubGoalStatus(subGoalId: Long, isCompleted: Boolean)
+    suspend fun clearGoalArchivedAt(goalId: Long)
 }

@@ -53,4 +53,8 @@ class GoalRepositoryImpl @Inject constructor(
         withContext(ioDispatcher) {
             goalDao.updateSubGoalCompletion(subGoalId, isCompleted)
         }
+
+    override suspend fun clearGoalArchivedAt(goalId: Long) = withContext(ioDispatcher) {
+        goalDao.clearGoalArchivedAt(goalId)
+    }
 }

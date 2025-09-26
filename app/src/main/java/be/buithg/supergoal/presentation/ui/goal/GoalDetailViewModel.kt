@@ -39,6 +39,7 @@ class GoalDetailViewModel @Inject constructor(
     val events = eventsChannel.receiveAsFlow()
 
     private val goalId: Long = savedStateHandle.get<Long>("goalId") ?: 0L
+    private var currentGoal: Goal? = null
 
     init {
         if (goalId == 0L) {
@@ -59,6 +60,13 @@ class GoalDetailViewModel @Inject constructor(
     fun onSubGoalToggled(subGoalId: Long, isCompleted: Boolean) {
         viewModelScope.launch {
             goalUseCases.updateSubGoalStatus(subGoalId, isCompleted)
+
+            if (!isCompleted) {
+                val goal = currentGoal
+                if (goal?.archivedAtMillis != null) {
+                    goalUseCases.reactivateGoal(goal.id)
+                }
+            }
         }
     }
 
@@ -68,6 +76,7 @@ class GoalDetailViewModel @Inject constructor(
                 if (goal == null) {
                     eventsChannel.trySend(GoalDetailEvent.CloseScreen)
                 } else {
+                    currentGoal = goal
                     _uiState.value = goal.toUiState()
                 }
             }

@@ -33,6 +33,9 @@ interface GoalDao {
     @Query("UPDATE sub_goals SET is_completed = :isCompleted WHERE sub_goal_id = :subGoalId")
     suspend fun updateSubGoalCompletion(subGoalId: Long, isCompleted: Boolean)
 
+    @Query("UPDATE goals SET archived_at_millis = NULL WHERE goal_id = :goalId")
+    suspend fun clearGoalArchivedAt(goalId: Long)
+
     @Query("DELETE FROM goals WHERE goal_id = :goalId")
     suspend fun deleteGoal(goalId: Long)
 }
