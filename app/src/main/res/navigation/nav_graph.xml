@@ -67,7 +67,22 @@
         android:id="@+id/nav_settings"
         android:name="be.buithg.supergoal.presentation.ui.settings.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings">
+        <action
+            android:id="@+id/action_nav_settings_to_staticPageFragment"
+            app:destination="@id/staticPageFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/staticPageFragment"
+        android:name="be.buithg.supergoal.presentation.ui.settings.StaticPageFragment"
+        android:label="fragment_static_page"
+        tools:layout="@layout/fragment_static_page">
+        <argument
+            android:name="pageTitle"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 
     <fragment
         android:id="@+id/addGoalFragment"
