@@ -2,6 +2,7 @@ package be.buithg.supergoal.presentation.ui.challenges
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,11 @@ class ChallengeAdapter(
 ) : ListAdapter<ChallengeListItem, RecyclerView.ViewHolder>(DiffCallback) {
 
     override fun getItemViewType(position: Int): Int =
-        if (getItem(position).isCompleted) VIEW_TYPE_COMPLETED else VIEW_TYPE_DEFAULT
+        if (getItem(position).status == ChallengeStatus.Completed) {
+            VIEW_TYPE_COMPLETED
+        } else {
+            VIEW_TYPE_DEFAULT
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -30,8 +35,8 @@ class ChallengeAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         when (holder) {
-            is ChallengeViewHolder -> holder.bind(item.challenge)
-            is CompletedViewHolder -> holder.bind(item.challenge)
+            is ChallengeViewHolder -> holder.bind(item)
+            is CompletedViewHolder -> holder.bind(item)
         }
     }
 
@@ -40,18 +45,23 @@ class ChallengeAdapter(
         private val onChallengeClick: (Challenge) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Challenge) = with(binding) {
-            ivCover.setImageResource(item.imageRes)
-            tvTitle.text = item.title
-            tvCategory.text = root.context.getString(R.string.challenge_category_format, item.category)
+        fun bind(item: ChallengeListItem) = with(binding) {
+            val challenge = item.challenge
+            ivCover.setImageResource(challenge.imageRes)
+            tvTitle.text = challenge.title
+            tvCategory.text = root.context.getString(R.string.challenge_category_format, challenge.category)
             tvCompletionTime.text = root.resources.getQuantityString(
                 R.plurals.challenge_completion_time,
-                item.durationDays,
-                item.durationDays,
+                challenge.durationDays,
+                challenge.durationDays,
             )
 
-            root.setOnClickListener { onChallengeClick(item) }
-            btnAddGoal.setOnClickListener { onChallengeClick(item) }
+            val isActive = item.status == ChallengeStatus.Active
+            btnAddGoal.isVisible = !isActive
+            statusActive.isVisible = isActive
+
+            root.setOnClickListener { onChallengeClick(challenge) }
+            btnAddGoal.setOnClickListener { onChallengeClick(challenge) }
         }
     }
 
@@ -60,12 +70,13 @@ class ChallengeAdapter(
         private val onChallengeClick: (Challenge) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Challenge) = with(binding) {
-            ivCover.setImageResource(item.imageRes)
-            tvTitle.text = item.title
-            tvDeadline.text = root.context.getString(R.string.challenge_category_format, item.category)
+        fun bind(item: ChallengeListItem) = with(binding) {
+            val challenge = item.challenge
+            ivCover.setImageResource(challenge.imageRes)
+            tvTitle.text = challenge.title
+            tvDeadline.text = root.context.getString(R.string.challenge_category_format, challenge.category)
             tvStatus.text = root.context.getString(R.string.challenge_completed_status)
-            root.setOnClickListener { onChallengeClick(item) }
+            root.setOnClickListener { onChallengeClick(challenge) }
         }
     }
 
