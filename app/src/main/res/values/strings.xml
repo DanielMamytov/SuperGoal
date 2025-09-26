@@ -86,7 +86,7 @@
     <string name="challenge_detail_complete_success">Great job! Challenge completed.</string>
     <string name="challenge_detail_goal_missing">Unable to find challenge progress. Please try again.</string>
     <string name="challenge_detail_goal_already_started">This challenge is already active.</string>
-    <string name="challenge_detail_active">Challenge Active</string>
+    <string name="challenge_detail_active">Activ</string>
     <string name="challenge_completed_status">Completed</string>
 
     <!-- Articles -->

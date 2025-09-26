@@ -8,7 +8,7 @@ object ArticleDataSource {
         Article(
             id = 1,
             title = "Orion Varela: The Quiet Rise",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.orion_varela,
             content = """
                 I grew up in a coastal town where the wind never rested. The ball skipped across concrete and sand, and every bounce tried to trick me. I used to believe talent was something you found, like a coin on the beach. It took me years to learn that talent is mostly repetition that refuses to be boring. On training days I arrived early and I left late. I wrote three lines after each session about one thing that went well, one thing that went wrong, and one next action I could do within twenty four hours. That habit felt small at first. Over time it became a compass. It kept me honest when praise tried to make me lazy and when criticism tried to make me small.
                 In my first professional season I did not start often. I watched more than I played. Instead of sulking I treated the bench like a classroom. I tracked the rhythm of the match and the tiny shifts in space that opened for five seconds and then closed. When the coach finally called my name I knew exactly which pockets I wanted to attack and which teammates liked an early pass. My debut goal looked like luck to the crowd. To me it was the sum of a thousand notes written after long nights.
@@ -18,7 +18,7 @@ object ArticleDataSource {
         Article(
             id = 2,
             title = "Amaya Rios: Failure Taught Me Timing",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.amaya_rios,
             content = """
                 My first trial ended in a hallway with a polite no. I cried on the bus and promised that the next time I would make the decision easy for the selectors. Not by shouting or forcing shots, but by learning timing. In football timing is kindness to your teammates. Arrive early enough to help, late enough to open the lane, quick enough to break a line. I spent months running with a metronome app in my pocket to feel tempo without looking.
                 That practice altered my career. I began to see the field like a tide. When pressure came from one side I offered the outlet on the other. When a young forward lost the ball I lifted a thumb and asked for it again. Coaches started to trust me in hard minutes because I did not panic. I moved with the match instead of fighting it.
@@ -31,7 +31,7 @@ object ArticleDataSource {
         Article(
             id = 3,
             title = "Dario Kovec: Building Strength That Serves",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.dario_kovec,
             content = """
                 I was not the strongest kid. In early matches taller defenders used me like a practice cone. I hated the gym and hid from leg day. Then a veteran took me aside and said that strength is not about showing off. Strength should serve a purpose. Hold the ball so a teammate can arrive. Win a duel so the team can breathe. Protect the play when chaos tries to scatter it. That sentence changed how I trained.
                 I built a simple routine. Push. Pull. Hinge. Carry. Sprint. Nothing fancy. I tracked the weight and the rest times, and I tracked how it felt on the field. If I gained muscle but lost agility I scaled back. Within a season my game slowed down in the best way. I could wait that extra heartbeat with a defender on my back and still lay the ball off cleanly.
@@ -44,7 +44,7 @@ object ArticleDataSource {
         Article(
             id = 4,
             title = "Lika Botev: The Science of Nerves",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.lika_botev,
             content = """
                 Before every big match my stomach argued with my head. I thought I needed to kill nerves. That never worked. A sports psychologist told me to treat nerves as information. Heart rate means your body is ready. Butterflies mean you care. Shaking means energy is stuck and needs a path. Once I saw nerves as signals I could design rituals to guide them.
                 I built three small practices. First I wrote a cue card with three controllables. Effort, positioning, vocal support. I read the card and nodded. Second I did box breathing for one minute and a half. In for four. Hold for four. Out for six. Hold for two. Third I jogged the touchline and said the first five names I would connect with in the opening minutes. None of this removed fear. It turned fear into focus.
@@ -56,7 +56,7 @@ object ArticleDataSource {
         Article(
             id = 5,
             title = "Nael Haddad: A Captain Learns to Listen",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.nael_haddad,
             content = """
                 I earned the armband young and made every early mistake a captain can make. I gave long speeches that impressed me and bored the room. I corrected people in public and watched trust drain from their faces. A mentor taught me to listen with posture. Face people. Quiet your phone. Ask short questions. Then ask one follow up that shows you care about the real answer.
                 On the field I switched from barking to signaling. Two fingers for a press. Palm down for calm. Thumb up for courage. People began to play freer because they knew I respected them. We still argued. We just argued like people on the same side. Results improved because the team felt safe enough to be honest.
@@ -69,7 +69,7 @@ object ArticleDataSource {
         Article(
             id = 6,
             title = "Suri Okafor: Crafting a Signature Move",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.suri_okafor,
             content = """
                 As a young winger I copied everyone. Step overs from one idol. Cut inside shots from another. The mix looked busy and produced little. A veteran coach told me to craft one signature move that fit my body and habits. I spent a summer finding it. First touch inside with the right sole, glide across the defender, then a pass rolled between the lines before the back line recovers. Simple. Repeatable. Mine.
                 Once I had a signature I stopped thinking and started reading. I looked up before the ball arrived to see the space. I asked fullbacks how they liked to receive. My training cut in half and my output doubled because my choices got cleaner.
@@ -81,7 +81,7 @@ object ArticleDataSource {
         Article(
             id = 7,
             title = "Bruno Kaito: The Long Road Back",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.bruno_kaito,
             content = """
                 A knee injury erased a season and stole my confidence. Rehab is lonely. Progress hides behind tiny numbers and careful steps. I wanted to skip chapters. My physio smiled and said that healing keeps its own calendar. I made peace with slow days by building a scoreboard I could win. Sleep on time. Protein at each meal. Mobility before breakfast. Five honest minutes of ball work. Check marks fed motivation. Motivation fed patience.
                 When I returned I was not the same player. I was smarter. I knew when to close and when to shade. I learned to value angles as much as raw speed. The comeback taught me that identity should sit on behaviors rather than labels. If I can act like a pro each day, then I am one, no matter the minutes on the pitch.
@@ -94,7 +94,7 @@ object ArticleDataSource {
         Article(
             id = 8,
             title = "Mirela Stan: Winning With Curiosity",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.mirela_stan,
             content = """
                 I used to think winning was about certainty. Then I met a coach who asked more questions than he gave answers. He turned me into a student of the game. After each match I noted three patterns I had not seen before. I asked defenders what movements annoyed them. I asked keepers what shots felt hardest to read. Curiosity widened my view until I could sense options without looking directly at them.
                 Curiosity also made me kinder. When you ask, you learn what teammates carry from home or school. You plan training with empathy. You forgive faster. We won more not because we shouted more, but because we understood more.
@@ -107,7 +107,7 @@ object ArticleDataSource {
         Article(
             id = 9,
             title = "Yahir Qadir: Playing the Long Season",
-            coverResId = R.drawable.article_im,
+            coverResId = R.drawable.mirela_stan,
             content = """
                 My club once faced a season that would test any heart. Travel, fixtures, injuries, and a title race that swung like a pendulum. I survived by thinking in cycles rather than in moods. Three match blocks. Review. Adjust. Repeat. I set personal targets that were within my control. Win aerials. Sprint recovery runs on time. Communicate early. I treated each block as a mini season with a tiny celebration at the end. This gave me fresh starts without throwing away lessons.
                 In life you can design the same cadence. Work in cycles that end with reflection. Keep one simple log with three columns. Energy. Output. Notes. After two months you will spot patterns that feelings hide. Protect what makes you strong. Replace what drags. People imagine champions as constant flames. I think we are more like campfires that are tended with care. Add fuel. Shield from wind. Let embers rest so they can burn again. The long season rewards the person who learns how to renew.

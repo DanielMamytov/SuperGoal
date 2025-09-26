@@ -36,10 +36,10 @@ class ChallengeSubGoalAdapter(
                 root.context,
                 R.color.selector_checkbox_tint,
             )
-            checkSubGoal.checkedIconTintList = AppCompatResources.getColorStateList(
-                root.context,
-                R.color.selector_checkbox_icon_tint,
-            )
+//            checkSubGoal.checkedIconTintList = AppCompatResources.getColorStateList(
+//                root.context,
+//                R.color.selector_checkbox_icon_tint,
+//            )
             checkSubGoal.setOnCheckedChangeListener { _, isChecked ->
                 onCheckedChange(item.id, isChecked)
             }

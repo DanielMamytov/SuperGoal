@@ -11,7 +11,7 @@ object ChallengeDataSource {
             category = "Body",
             durationDays = 7,
             subgoals = dailyTasks("Drink 2 litres water", 7),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.sunrise_scan,
         ),
         Challenge(
             id = 2,
@@ -19,7 +19,7 @@ object ChallengeDataSource {
             category = "Social",
             durationDays = 7,
             subgoals = dailyTasks("Clear five emails", 7),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.inbox,
         ),
         Challenge(
             id = 3,
@@ -27,7 +27,7 @@ object ChallengeDataSource {
             category = "Body",
             durationDays = 14,
             subgoals = dailyTasks("5 minutes of movement", 14),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.micro_workout,
         ),
         Challenge(
             id = 4,
@@ -35,7 +35,7 @@ object ChallengeDataSource {
             category = "Money",
             durationDays = 14,
             subgoals = dailyTasks("Track one expense line per day", 14),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.budget_breath,
         ),
         Challenge(
             id = 5,
@@ -43,7 +43,7 @@ object ChallengeDataSource {
             category = "Career",
             durationDays = 14,
             subgoals = dailyTasks("10 focus minutes with a timer", 14),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.deep_work_out,
         ),
         Challenge(
             id = 6,
@@ -51,7 +51,7 @@ object ChallengeDataSource {
             category = "Mind",
             durationDays = 30,
             subgoals = dailyTasks("Screens off 1 hour before bed", 30),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.digital_work,
         ),
         Challenge(
             id = 7,
@@ -59,7 +59,7 @@ object ChallengeDataSource {
             category = "Mind",
             durationDays = 30,
             subgoals = dailyTasks("Write one thankful line", 30),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.gratitude,
         ),
         Challenge(
             id = 8,
@@ -67,7 +67,7 @@ object ChallengeDataSource {
             category = "Other",
             durationDays = 30,
             subgoals = dailyTasks("Write one thankful line", 30),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.craft,
         ),
         Challenge(
             id = 9,
@@ -75,7 +75,7 @@ object ChallengeDataSource {
             category = "Other",
             durationDays = 30,
             subgoals = dailyTasks("Learn 5 new words daily", 30),
-            imageRes = R.drawable.challenge_screen_ic,
+            imageRes = R.drawable.language,
         ),
     )
 
