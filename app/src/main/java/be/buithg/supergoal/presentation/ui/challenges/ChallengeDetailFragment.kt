@@ -99,9 +99,9 @@ class ChallengeDetailFragment : Fragment() {
     private fun updateContent(state: ChallengeDetailUiState) = with(binding) {
         textTitle.text = state.title
         textCategoryValue.text = state.category
-        imageIllustration.setImageResource(
-            if (state.illustrationRes != 0) state.illustrationRes else R.drawable.challenge_screen_ic,
-        )
+//        imageIllustration.setImageResource(
+//            if (state.illustrationRes != 0) state.illustrationRes else R.drawable.challenge_screen_ic,
+//        )
 
         subGoalAdapter.submitList(state.subGoals)
         textEmptySubGoals.isVisible = state.isSubGoalListEmpty
@@ -137,6 +137,7 @@ class ChallengeDetailFragment : Fragment() {
         val canComplete = state.canCompleteChallenge && showCompleteButton
         buttonCompleteChallenge.isEnabled = canComplete
         buttonCompleteChallenge.alpha = if (canComplete) 1f else 0.5f
+
 
         statusCompleted.isVisible = isChallengeCompleted
         buttonPerformAgain.isVisible = isChallengeCompleted

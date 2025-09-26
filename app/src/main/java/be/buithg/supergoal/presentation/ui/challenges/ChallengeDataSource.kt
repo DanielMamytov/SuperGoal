@@ -66,6 +66,7 @@ object ChallengeDataSource {
             title = "Craft Corner",
             category = "Other",
             durationDays = 30,
+            subgoals = dailyTasks("Write one thankful line", 30),
             imageRes = R.drawable.challenge_screen_ic,
         ),
         Challenge(

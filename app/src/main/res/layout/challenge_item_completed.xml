@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="15dp"
     android:layout_height="140dp"
     android:background="@drawable/bg_goal_item_green"
     android:paddingEnd="16dp">

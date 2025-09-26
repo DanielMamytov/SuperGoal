@@ -193,6 +193,7 @@ class ChallengeDetailViewModel @Inject constructor(
 
         viewModelScope.launch {
             goalUseCases.upsertGoal(resetGoal)
+
             sendMessage(R.string.challenge_detail_reset_message)
         }
     }

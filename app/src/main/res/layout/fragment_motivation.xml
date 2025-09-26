@@ -24,7 +24,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_extra_bold"
-            android:text="MY GOALS"
+            android:text="MOTIVATION"
             android:textColor="@android:color/white"
             android:textSize="40sp" />
 
@@ -71,6 +71,7 @@
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMotivations"
             android:layout_width="match_parent"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
