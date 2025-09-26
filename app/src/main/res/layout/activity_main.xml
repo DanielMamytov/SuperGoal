@@ -30,6 +30,8 @@
         app:itemBackground="@android:color/transparent"
         app:itemRippleColor="@color/nav_ripple"
         app:menu="@menu/bottom_nav_menu"
+        android:foregroundGravity="bottom"
+        app:itemGravity="center"
         app:itemTextColor="@color/bottom_nav_text_selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

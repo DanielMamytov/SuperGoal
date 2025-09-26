@@ -61,7 +61,7 @@
         android:textColor="#8FFFFFFF"
         android:textSize="14sp"
         android:maxLines="2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/image"
         android:layout_marginStart="12dp"
         app:layout_constraintStart_toEndOf="@+id/ivCover"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
@@ -72,9 +72,11 @@
         tools:text="I grew up in a coastal town where the wind..." />
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="20dp"
         android:layout_marginBottom="20dp"
         android:layout_height="20dp"
+
         android:src="@drawable/play_ic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

@@ -58,7 +58,7 @@ class ChallengeAdapter(
 
             val isActive = item.status == ChallengeStatus.Active
             btnAddGoal.isVisible = !isActive
-            statusActive.isVisible = isActive
+//            statusActive.isVisible = isActive
 
             root.setOnClickListener { onChallengeClick(challenge) }
             btnAddGoal.setOnClickListener { onChallengeClick(challenge) }

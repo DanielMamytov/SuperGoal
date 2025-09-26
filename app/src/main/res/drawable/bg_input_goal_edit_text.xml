@@ -4,11 +4,7 @@
     <item android:state_focused="true">
         <shape android:shape="rectangle">
             <solid android:color="#252A34"/>
-            <corners
-                android:topLeftRadius="0dp"
-                android:topRightRadius="0dp"
-                android:bottomLeftRadius="22dp"
-                android:bottomRightRadius="22dp"/>
+            <corners android:radius="22dp"/>
             <stroke android:width="2dp" android:color="#505055"/> <!-- чуть ярче при фокусе -->
         </shape>
     </item>
@@ -17,11 +13,7 @@
     <item>
         <shape android:shape="rectangle">
             <solid android:color="#252A34"/>
-            <corners
-                android:topLeftRadius="0dp"
-                android:topRightRadius="0dp"
-                android:bottomLeftRadius="22dp"
-                android:bottomRightRadius="22dp"/>
+            <corners android:radius="22dp"/>
             <stroke android:width="2dp" android:color="#39393F"/>
         </shape>
     </item>
