@@ -4,7 +4,7 @@
         android:icon="@drawable/goal_ic"
         android:title="Goals"/>
     <item
-        android:id="@+id/nav_motivation"
+        android:id="@+id/motivationFragment"
         android:icon="@drawable/ic_motivation"
         android:title="Motivation"/>
     <item

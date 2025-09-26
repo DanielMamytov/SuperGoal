@@ -13,8 +13,6 @@ class ArticleFragment : Fragment() {
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var articleAdapter: ArticleAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,21 +24,6 @@ class ArticleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecyclerView()
-        articleAdapter.submitList(ArticleDataSource.getArticles())
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding.rvArticles.adapter = null
-        _binding = null
-    }
-
-    private fun setupRecyclerView() {
-        articleAdapter = ArticleAdapter()
-        binding.rvArticles.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = articleAdapter
-        }
-    }
 }
