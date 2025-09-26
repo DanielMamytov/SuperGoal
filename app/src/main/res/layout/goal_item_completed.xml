@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:layout_marginTop="15dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_goal_item_empty"
+    android:paddingEnd="16dp">
+
+    <!-- Обложка цели (квадрат с закруглениями) -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCover"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:paddingStart="2dp"
+        android:paddingVertical="2dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerMedium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <!-- Заголовок цели -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLines="2"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_extra_bold"
+        tools:text="Win Championship Trophy"
+        app:layout_constraintStart_toEndOf="@id/ivCover"
+        app:layout_constraintTop_toTopOf="@id/ivCover"
+        android:layout_marginStart="12dp" />
+
+    <!-- Процент справа (красный) -->
+=
+
+    <!-- Категория/подзаголовок -->
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#B3FFFFFF"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/poppins_regular"
+        tools:text="Team"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ifCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivCover"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory">
+
+        <TextView
+            android:id="@+id/tvTextCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_extra_bold"
+            android:textColor="#F23230"
+
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Completed" />
+
+        <TextView
+            android:id="@+id/tvDeadline2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:textColor="#8FFFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCover"
+            app:layout_constraintTop_toBottomOf="@+id/pbProgress"
+            tools:text="Nov 30, 2024" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
