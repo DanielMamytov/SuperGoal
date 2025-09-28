@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:paddingStart="2dp"
         android:paddingVertical="2dp"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/app_name"
         android:src="@drawable/place_holder_prime"
         app:layout_constraintDimensionRatio="1:1"
